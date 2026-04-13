@@ -424,30 +424,30 @@ body {
   margin: 3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 4rem;
 }
 
 .team-profile {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
 }
 
-.team-monogram {
-  width: 120px;
-  height: 120px;
+.team-headshot {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: var(--sage-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 300;
-  color: var(--white);
-  letter-spacing: 2px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 2rem;
+  box-shadow: 0 6px 24px rgba(61,54,50,0.18);
+  border: 3px solid var(--sage-light);
   flex-shrink: 0;
+}
+
+.team-profile-body {
+  width: 100%;
 }
 
 .team-profile-body h3 {
@@ -470,6 +470,34 @@ body {
   color: var(--warm-gray);
   line-height: 1.75;
   margin-top: 0.5rem;
+}
+
+
+/* ══════════════════════════════════════════
+   EDITORIAL PHOTO BREAKS
+══════════════════════════════════════════ */
+.editorial-break {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.editorial-break img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.editorial-caption {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-top: 0.85rem;
+  display: block;
 }
 
 
@@ -1079,8 +1107,7 @@ body {
   .toc-nav { padding: 4rem 1.5rem; }
   .toc-list { grid-template-columns: 1fr; }
   .toc-list li:nth-child(odd) { border-right: none; }
-  .team-profile { grid-template-columns: 1fr; }
-  .team-monogram { width: 90px; height: 90px; font-size: 1.5rem; }
+  .team-headshot { width: 140px; height: 140px; }
   .exp-grid { grid-template-columns: 1fr; }
   .philosophy-pillars { grid-template-columns: 1fr; gap: 2rem; }
   .portal-grid { grid-template-columns: 1fr 1fr; }
@@ -1142,6 +1169,24 @@ body {
 
   .guide-section + .guide-section {
     border-top: none !important;
+  }
+
+  /* Editorial photo breaks — full page separator in print */
+  .editorial-break {
+    max-width: 100% !important;
+    padding: 0 !important;
+    page-break-after: always;
+    page-break-before: always;
+  }
+
+  .editorial-break img {
+    width: 100% !important;
+    max-height: 9in;
+    object-fit: cover;
+  }
+
+  .editorial-caption {
+    font-size: 7pt !important;
   }
 
   /* Avoid breaking inside components */
@@ -1263,6 +1308,15 @@ body {
 
 
 <!-- ═══════════════════════════════════════════════════ -->
+<!-- EDITORIAL BREAK: Hill Country Estate Exterior       -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="editorial-break">
+  <img src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/MFM02295-HDR.jpg" alt="Hill Country Estate exterior" loading="lazy">
+  <span class="editorial-caption">Hill Country Estate &nbsp;&middot;&nbsp; Georgetown, Texas</span>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
 <!-- 02 · PHILOSOPHY                                     -->
 <!-- ═══════════════════════════════════════════════════ -->
 <section class="guide-section" id="philosophy">
@@ -1305,7 +1359,7 @@ body {
 
   <div class="team-profiles">
     <div class="team-profile">
-      <div class="team-monogram">HS</div>
+      <img class="team-headshot" src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/Headshots-156.jpg" alt="Heather Smith">
       <div class="team-profile-body">
         <h3>Heather Smith</h3>
         <span class="team-role">Founder &amp; Principal Designer</span>
@@ -1315,7 +1369,7 @@ body {
       </div>
     </div>
     <div class="team-profile">
-      <div class="team-monogram">RM</div>
+      <img class="team-headshot" src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/Headshots-88.jpg" alt="Rachel Mazur">
       <div class="team-profile-body">
         <h3>Rachel Mazur</h3>
         <span class="team-role">Designer &amp; Brand Manager</span>
@@ -1384,6 +1438,15 @@ body {
     </ul>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- EDITORIAL BREAK: Modern Farmhouse Kitchen           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="editorial-break">
+  <img src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/12.jpg" alt="Modern farmhouse kitchen" loading="lazy">
+  <span class="editorial-caption">Modern Farmhouse Kitchen &nbsp;&middot;&nbsp; Central Texas</span>
+</div>
 
 
 <!-- ═══════════════════════════════════════════════════ -->
@@ -1509,6 +1572,15 @@ body {
     <p>We&rsquo;ll always communicate proactively about timeline shifts. Your portal will show real-time project status so you&rsquo;re never guessing.</p>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- EDITORIAL BREAK: Spa Primary Bath                   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="editorial-break">
+  <img src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/Master20Bath20to20Closet.jpeg" alt="Spa-inspired primary bath" loading="lazy">
+  <span class="editorial-caption">Spa Primary Bath &nbsp;&middot;&nbsp; Hill Country Estate</span>
+</div>
 
 
 <!-- ═══════════════════════════════════════════════════ -->
@@ -1659,6 +1731,15 @@ body {
 
 
 <!-- ═══════════════════════════════════════════════════ -->
+<!-- EDITORIAL BREAK: Luxury Shower                      -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="editorial-break">
+  <img src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/24.jpg" alt="Luxury shower detail" loading="lazy">
+  <span class="editorial-caption">Luxury Shower Detail &nbsp;&middot;&nbsp; Spa Primary Bath</span>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
 <!-- 11 · TESTIMONIALS                                   -->
 <!-- ═══════════════════════════════════════════════════ -->
 <section class="guide-section" id="testimonials">
@@ -1731,6 +1812,15 @@ body {
     </div>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- EDITORIAL BREAK: Fireplace                          -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="editorial-break">
+  <img src="https://bce2aygnxm.wpdns.site/wp-content/uploads/2026/04/11.jpg" alt="Fireplace detail" loading="lazy">
+  <span class="editorial-caption">Living Room Fireplace &nbsp;&middot;&nbsp; Hill Country Estate</span>
+</div>
 
 
 <!-- ═══════════════════════════════════════════════════ -->
