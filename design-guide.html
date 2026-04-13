@@ -1,62 +1,1518 @@
-ard">
-      <h4>New Construction</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element321 | Your Design Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF8F6;
+  --warm-white: #F7F7F7;
+  --sage-light: #D1C7C1;
+  --sage: #C6B9B0;
+  --sage-dark: #B8A99A;
+  --charcoal: #161616;
+  --charcoal-warm: #3D3632;
+  --charcoal-light: #333231;
+  --mocha: #9C8E84;
+  --warm-gray: #808080;
+  --warm-gold: #C4956A;
+  --white: #FFFFFF;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--charcoal-warm);
+  background: var(--cream);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.guide-header {
+  background: linear-gradient(135deg, #3d3028 0%, #5a4a3a 25%, #6b5d4f 40%, #5a4a3a 60%, #4a3d35 75%, #2c2520 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guide-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(180, 165, 140, 0.25), transparent 70%),
+    radial-gradient(ellipse at 70% 30%, rgba(198, 185, 176, 0.15), transparent 60%);
+}
+
+.guide-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--cream), transparent);
+}
+
+.guide-header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.guide-header .logo {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.guide-header .logo-sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 3rem;
+}
+
+.guide-header .divider {
+  width: 60px;
+  height: 1px;
+  background: var(--sage-light);
+  margin: 0 auto 2rem;
+}
+
+.guide-header h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.guide-header p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.toc h2 {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-bottom: 2.5rem;
+}
+
+.toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.toc-links a {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--charcoal-warm);
+  text-decoration: none;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--sage-light);
+  transition: all 0.3s ease;
+}
+
+.toc-links a:hover {
+  background: var(--sage);
+  color: var(--white);
+  border-color: var(--sage);
+}
+
+/* ── SECTIONS ── */
+.guide-section {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.guide-section:last-of-type { border-bottom: none; }
+
+.section-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-bottom: 0.75rem;
+}
+
+.guide-section h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 1.75rem;
+  line-height: 1.25;
+}
+
+.guide-section h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+.guide-section h4 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.guide-section p {
+  font-size: 0.93rem;
+  color: var(--charcoal-warm);
+  margin-bottom: 1.25rem;
+  line-height: 1.9;
+}
+
+.guide-section ul, .guide-section ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.guide-section li {
+  font-size: 0.93rem;
+  color: var(--charcoal-warm);
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
+}
+
+/* ── BLOCKQUOTE / PULL QUOTE ── */
+.pull-quote {
+  position: relative;
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+  margin: 2.5rem 0;
+  background: var(--white);
+  border-left: 3px solid var(--sage);
+}
+
+.pull-quote p {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--charcoal-warm);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.pull-quote .attribution {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-top: 1rem;
+  display: block;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.04);
+  padding: 2rem 2.25rem;
+  margin: 2rem 0;
+}
+
+.highlight-box p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--charcoal-warm);
+}
+
+.highlight-box strong {
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+/* ── TEAM CARDS ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--sage-light);
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.team-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.team-card .role {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+}
+
+.team-card p {
+  font-size: 0.88rem;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.team-card .personal {
+  font-size: 0.82rem;
+  color: var(--warm-gray);
+  font-style: italic;
+  margin-top: 0.75rem;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: var(--sage-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+}
+
+.service-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  margin-bottom: 1rem;
+}
+
+.service-card ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.service-card li {
+  font-size: 0.82rem;
+  color: var(--charcoal-warm);
+  margin-bottom: 0.3rem;
+}
+
+/* ── PROCESS STEPS ── */
+.process-steps { margin: 2.5rem 0; }
+
+.process-step {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.process-step:last-child { border-bottom: none; }
+
+.step-number {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--sage-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--sage-dark);
+  margin-top: 0.1rem;
+}
+
+.step-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+}
+
+.step-content .timeline-note {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.step-content p {
+  font-size: 0.88rem;
+  color: var(--warm-gray);
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+/* ── TIMELINE BAR ── */
+.timeline-overview {
+  background: var(--white);
+  padding: 2rem 2.25rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.timeline-overview h4 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-label {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--charcoal-warm);
+  width: 160px;
+  min-width: 160px;
+}
+
+.timeline-bar {
+  height: 6px;
+  background: var(--sage-light);
+  border-radius: 3px;
+  flex: 1;
+  position: relative;
+}
+
+.timeline-bar .fill {
+  height: 100%;
+  background: var(--sage);
+  border-radius: 3px;
+}
+
+.timeline-duration {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--mocha);
+  width: 80px;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ── EXPECTATIONS GRID ── */
+.expectations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.expectation-card {
+  background: var(--white);
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.expectation-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.expectation-card p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.expectation-card p:last-child { margin-bottom: 0; }
+
+/* ── PHILOSOPHY GRID ── */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.philosophy-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.philosophy-item .icon {
+  font-size: 1.5rem;
+  color: var(--sage);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.philosophy-item p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  background: var(--white);
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.checklist li:hover {
+  border-color: var(--sage-light);
+  transform: translateX(4px);
+}
+
+.check-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--sage-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  font-size: 0.65rem;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.checklist li:hover .check-icon {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+.check-text {
+  font-size: 0.88rem;
+  color: var(--charcoal-warm);
+  line-height: 1.65;
+}
+
+.check-text strong {
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+/* ── INVESTMENT TIERS ── */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.tier-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.tier-card:hover {
+  border-color: var(--sage-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+}
+
+.tier-card .tier-name {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  margin-bottom: 1rem;
+}
+
+.tier-card .price {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0.75rem;
+}
+
+.tier-card .tier-desc {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.tier-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.tier-card li {
+  font-size: 0.82rem;
+  color: var(--charcoal-warm);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.tier-card li:last-child { border-bottom: none; }
+
+.tier-card li::before {
+  content: '\2713';
+  color: var(--sage);
+  font-weight: 600;
+  margin-right: 0.6rem;
+}
+
+/* ── FAQ ── */
+.faq-list { margin: 2rem 0; }
+
+.faq-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  font-size: 0.88rem;
+  color: var(--warm-gray);
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonial-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.testimonial {
+  background: var(--white);
+  padding: 2.25rem;
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.testimonial::before {
+  content: '\201C';
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  color: var(--sage-light);
+  position: absolute;
+  top: 0.5rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+.testimonial p {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--charcoal-warm);
+  line-height: 1.8;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial .client-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mocha);
+  padding-left: 2rem;
+  display: block;
+}
+
+/* ── PORTAL SECTION ── */
+.portal-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.portal-feature {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.portal-feature .icon {
+  font-size: 1.75rem;
+  color: var(--sage);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.portal-feature h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.portal-feature p {
+  font-size: 0.82rem;
+  color: var(--warm-gray);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ── CONTACT BLOCK ── */
+.contact-block {
+  background: linear-gradient(135deg, #3d3028 0%, #5a4a3a 50%, #4a3d35 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.contact-block h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.contact-block p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  margin-bottom: 0.35rem;
+}
+
+.contact-block a {
+  color: var(--sage-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-block a:hover { color: var(--white); }
+
+/* ── FOOTER ── */
+.guide-footer {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  font-size: 0.72rem;
+  color: var(--warm-gray);
+  letter-spacing: 1px;
+}
+
+.guide-footer .logo-small {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--sage-light);
+  margin: 0 0 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .guide-header { padding: 4rem 1.5rem; min-height: 60vh; }
+  .guide-section { padding: 3.5rem 1.5rem; }
+  .team-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-step { flex-direction: column; gap: 0.75rem; }
+  .step-number { width: 44px; height: 44px; min-width: 44px; font-size: 1rem; }
+  .tier-grid { grid-template-columns: 1fr; }
+  .expectations-grid { grid-template-columns: 1fr; }
+  .philosophy-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .portal-features { grid-template-columns: 1fr; }
+  .toc-links { flex-direction: column; align-items: center; }
+  .timeline-row { flex-direction: column; gap: 0.25rem; align-items: flex-start; }
+  .timeline-label { width: auto; min-width: auto; }
+  .timeline-duration { width: auto; min-width: auto; text-align: left; }
+}
+
+/* ── PRINT ── */
+@media print {
+  .guide-header { background: var(--charcoal) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .contact-block { background: var(--charcoal) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; background: white; }
+  .guide-section { page-break-inside: avoid; padding: 2rem 0; }
+  .toc-links a { border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<header class="guide-header">
+  <div class="guide-header-content">
+    <div class="logo">Element321</div>
+    <div class="logo-sub">Imagine &middot; Design &middot; Create</div>
+    <div class="divider"></div>
+    <h1>Your Design Experience</h1>
+    <p>A guide to working together, creating something beautiful, and enjoying every step of the journey.</p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<nav class="toc">
+  <h2>In This Guide</h2>
+  <div class="toc-links">
+    <a href="#welcome">Welcome</a>
+    <a href="#philosophy">Our Philosophy</a>
+    <a href="#team">Your Team</a>
+    <a href="#services">Services</a>
+    <a href="#process">Our Process</a>
+    <a href="#timeline">Timelines</a>
+    <a href="#expectations">Expectations</a>
+    <a href="#together">Working Together</a>
+    <a href="#portal">Your Portal</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Kind Words</a>
+    <a href="#faq">FAQ</a>
+    <a href="#investment">Investment</a>
+    <a href="#homework">Inspiration</a>
+    <a href="#next">Next Steps</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 1. WELCOME -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="welcome">
+  <div class="section-label">Section 01</div>
+  <h2>Welcome to Element321</h2>
+  <div class="section-divider"></div>
+  <p>We're so glad you're here.</p>
+  <p>Working with an interior designer should feel exciting, not overwhelming. That's why we created this guide: to walk you through exactly how we work together, what to expect, and how to make the most of your design experience.</p>
+  <p>Think of this as your roadmap. Each section will help you feel confident, prepared, and inspired as we bring your vision to life.</p>
+  <p>We can't wait to get started.</p>
+
+  <div class="pull-quote">
+    <p>Your home should be as beautiful as it is livable. We design interiors that reflect who you are and how you actually live. No showrooms. No untouchable rooms. Just thoughtful, layered spaces where families gather, memories happen, and every detail feels intentional.</p>
+  </div>
+
+  <p>With warmth,<br><strong>Heather &amp; Rachel</strong></p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 2. OUR PHILOSOPHY -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="philosophy">
+  <div class="section-label">Section 02</div>
+  <h2>Our Story &amp; Philosophy</h2>
+  <div class="section-divider"></div>
+  <p>Element321 was born from a simple belief: that every home has a story waiting to be told. We founded this studio to bring thoughtful, livable interiors to Central Texas families who want their spaces to feel as good as they look.</p>
+  <p>We don't design for magazines. We design for mornings. For the way light hits your kitchen counter while you pour coffee. For the reading nook your daughter claims as her own. For the dining table where everyone lingers a little longer than planned.</p>
+
+  <div class="philosophy-grid">
+    <div class="philosophy-item">
+      <span class="icon">&#9671;</span>
+      <h4>Intentional</h4>
+      <p>Every choice serves a purpose. We design with care, ensuring each element earns its place in your home.</p>
+    </div>
+    <div class="philosophy-item">
+      <span class="icon">&#9825;</span>
+      <h4>Personal</h4>
+      <p>Your home is uniquely yours. We listen closely to craft spaces that reflect your family's story and the way you actually live.</p>
+    </div>
+    <div class="philosophy-item">
+      <span class="icon">&#9711;</span>
+      <h4>Livable</h4>
+      <p>Beauty that works in real life. Spaces built for morning coffee, family dinners, and everything in between.</p>
+    </div>
+  </div>
+
+  <p>We love working with families who are building new homes, renovating spaces they've outgrown, or simply ready for a room that finally feels right. If you value quality, care, and design that's made for living, you're in the right place.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 3. YOUR DESIGN TEAM -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="team">
+  <div class="section-label">Section 03</div>
+  <h2>Meet Your Design Team</h2>
+  <div class="section-divider"></div>
+  <p>When you work with Element321, you're not handed off to a revolving team. You work directly with us, from the first conversation to the final reveal.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-photo">HS</div>
+      <h3>Heather Smith</h3>
+      <div class="role">Founder &amp; Principal Designer</div>
+      <p>With a deep love for design and an eye for what makes a space feel like home, Heather founded Element321 to bring thoughtful, livable interiors to Central Texas families. She leads every project with warmth, precision, and a commitment to getting the details right.</p>
+      <p>Heather oversees all design direction, manages finish selections and sourcing, and ensures every project reflects the client's vision while meeting the highest standards of quality and craftsmanship.</p>
+      <p class="personal">When she's not sourcing the perfect piece, she's at home in Georgetown with her husband and two daughters.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo">RM</div>
+      <h3>Rachel Mazur</h3>
+      <div class="role">Designer &amp; Brand Manager</div>
+      <p>A native Austinite with an instinct for style and storytelling, Rachel brings a keen creative vision to every project. She manages the Element321 brand and works alongside Heather to deliver cohesive designs that feel effortless and elevated.</p>
+      <p>Rachel handles design development, vendor coordination, and client communications, ensuring every touchpoint of your experience is seamless and beautifully executed.</p>
+      <p class="personal">A mom of two, Rachel draws constant inspiration from how real families live and what they need from their spaces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 4. OUR SERVICES -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="services">
+  <div class="section-label">Section 04</div>
+  <h2>What We Do</h2>
+  <div class="section-divider"></div>
+  <p>Every project is different, and we tailor our approach to match your scope, timeline, and needs. Here's what we offer:</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <h4>Full-Service Interior Design</h4>
+      <p>Our signature offering. We handle everything from concept through installation.</p>
+      <ul>
+        <li>Space planning and layout optimization</li>
+        <li>Complete finish selections (tile, counters, flooring, paint, hardware)</li>
+        <li>Furniture, lighting, and accessory curation</li>
+        <li>Vendor and contractor coordination</li>
+        <li>Procurement and project management</li>
+        <li>Professional installation and styling</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h4>New Construction Design</h4>
+      <p>We partner with your builder from the ground up to make every finish decision.</p>
+      <ul>
+        <li>Architectural finish review and consultation</li>
+        <li>Interior and exterior material selections</li>
+        <li>Fixture and hardware specification</li>
+        <li>Builder coordination and site visits</li>
+        <li>Furniture planning for move-in</li>
+        <li>Final styling and reveal</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h4>Renovation Design</h4>
+      <p>Reimagining spaces you've outgrown, from single rooms to whole-home renovations.</p>
+      <ul>
+        <li>Existing space assessment</li>
+        <li>Layout reconfiguration</li>
+        <li>Material and finish upgrades</li>
+        <li>Contractor coordination</li>
+        <li>Furnishing updates</li>
+        <li>Project oversight through completion</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h4>Room Refresh</h4>
+      <p>A focused update for a single room or area that needs new energy.</p>
+      <ul>
+        <li>Style assessment and direction</li>
+        <li>Furniture and accessory selections</li>
+        <li>Color and textile updates</li>
+        <li>Styling and placement</li>
+        <li>Shopping and sourcing</li>
+        <li>One-day installation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 5. OUR DESIGN PROCESS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="process">
+  <div class="section-label">Section 05</div>
+  <h2>Your Design Journey</h2>
+  <div class="section-divider"></div>
+  <p>Every project follows a thoughtful, proven process. This ensures nothing falls through the cracks and you always know exactly where things stand.</p>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Discovery</h4>
+        <span class="timeline-note">Week 1-2</span>
+        <p>We begin with you. Through conversations, a style questionnaire, and a visit to your space, we learn how you live, what you love, and what your home needs to feel like yours. This is where we really get to know each other on a personal level and set the tone for the entire project.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Concept Development</h4>
+        <span class="timeline-note">Week 2-4</span>
+        <p>This is where the magic starts. We develop mood boards, color palettes, and a design direction that captures your vision. We present, discuss, and refine until it feels just right. Every space has a melody, and this is where we find yours.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Design Presentation</h4>
+        <span class="timeline-note">Week 4-6</span>
+        <p>Room by room, we present detailed plans: furniture layouts, finish selections, fabric choices, lighting, and hardware. Everything is curated to work together beautifully. You'll see the complete picture before a single order is placed.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>Refinement &amp; Approval</h4>
+        <span class="timeline-note">Week 6-8</span>
+        <p>Your feedback shapes the final design. We refine selections, adjust details, and finalize everything. For finishes, you'll come in and walk through tile, wood, wallpaper, paint, and hardware samples together with us. The tactile experience matters.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h4>Procurement &amp; Project Management</h4>
+        <span class="timeline-note">Week 8-20+</span>
+        <p>Behind the scenes, we order, track, inspect, and coordinate every item. Lead times for custom furnishings and materials can range from 4 to 16 weeks. We manage the logistics so you don't have to, and you'll receive regular updates through your portal.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">6</div>
+      <div class="step-content">
+        <h4>Installation &amp; Styling</h4>
+        <span class="timeline-note">1-3 Days</span>
+        <p>This is the day it all comes together. Our team installs, places, and styles every piece. From furniture arrangement to the final throw pillow, we handle every detail so you walk into a finished space.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">7</div>
+      <div class="step-content">
+        <h4>The Reveal</h4>
+        <span class="timeline-note">The Best Day</span>
+        <p>Welcome to your new favorite place. We walk you through every room, celebrate the transformation, and make sure you love every inch of it. This is the moment that makes everything worth it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 6. TIMELINE & MILESTONES -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="timeline">
+  <div class="section-label">Section 06</div>
+  <h2>Timeline &amp; Milestones</h2>
+  <div class="section-divider"></div>
+  <p>Great design takes time to do well. Here are typical timelines by project type. We'll give you a detailed, personalized timeline during your Discovery phase.</p>
+
+  <div class="timeline-overview">
+    <h4>Typical Project Durations</h4>
+    <div class="timeline-row">
+      <span class="timeline-label">Room Refresh</span>
+      <div class="timeline-bar"><div class="fill" style="width: 20%"></div></div>
+      <span class="timeline-duration">4-8 weeks</span>
+    </div>
+    <div class="timeline-row">
+      <span class="timeline-label">Full-Service Design</span>
+      <div class="timeline-bar"><div class="fill" style="width: 50%"></div></div>
+      <span class="timeline-duration">3-6 months</span>
+    </div>
+    <div class="timeline-row">
+      <span class="timeline-label">Renovation</span>
+      <div class="timeline-bar"><div class="fill" style="width: 65%"></div></div>
+      <span class="timeline-duration">4-9 months</span>
+    </div>
+    <div class="timeline-row">
+      <span class="timeline-label">New Construction</span>
+      <div class="timeline-bar"><div class="fill" style="width: 100%"></div></div>
+      <span class="timeline-duration">6-24 months</span>
+    </div>
+  </div>
+
+  <h3>What Can Affect Timelines</h3>
+  <p>A few things can shift your project schedule, and all of them are normal:</p>
+  <ul>
+    <li><strong>Decision timing</strong> &mdash; timely feedback keeps everything on track</li>
+    <li><strong>Lead times</strong> &mdash; custom and imported items can take 8-16 weeks</li>
+    <li><strong>Construction schedules</strong> &mdash; for new builds, design follows the build pace</li>
+    <li><strong>Availability</strong> &mdash; seasonal demand can affect vendor timelines</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p>We'll always communicate proactively about timeline shifts. Your portal will show real-time project status so you're never guessing.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 7. EXPECTATIONS FRAMEWORK -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="expectations">
+  <div class="section-label">Section 07</div>
+  <h2>What to Expect</h2>
+  <div class="section-divider"></div>
+  <p>We want you to feel informed and confident at every stage. Clear expectations are the foundation of a great working relationship.</p>
+
+  <div class="expectations-grid">
+    <div class="expectation-card">
+      <h4>Communication</h4>
+      <p><strong>Our hours:</strong> Monday through Friday, 9am to 5pm CT</p>
+      <p><strong>Best way to reach us:</strong> Email or your client portal</p>
+      <p><strong>Response time:</strong> Within one business day, often sooner</p>
+      <p><strong>Updates:</strong> Regular project updates through your portal, with check-in calls at key milestones</p>
+    </div>
+    <div class="expectation-card">
+      <h4>Budget</h4>
+      <p>We design to your budget, not beyond it. Transparency about your investment range helps us serve you better.</p>
+      <p>Design fees are separate from product and furnishing costs. We'll present options at multiple price points when possible.</p>
+      <p>Changes after approvals may incur additional design time. We'll always discuss this before proceeding.</p>
+    </div>
+    <div class="expectation-card">
+      <h4>Decisions</h4>
+      <p>At key milestones, we'll present curated options and ask for your approval. We won't overwhelm you.</p>
+      <p>We recommend 5 to 7 business days to review and decide. You'll get our best recommendation, a strong alternate, and the confidence to choose.</p>
+      <p>We include reasonable revision rounds per design phase.</p>
+    </div>
+    <div class="expectation-card">
+      <h4>Collaboration</h4>
+      <p>We work with your architect, builder, and other vendors as a team. We coordinate directly on finish specifications and timelines.</p>
+      <p>Please keep us in the loop on any independent design decisions that affect the project. The best outcomes come from a unified vision.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>Our promise: we'll never overwhelm you with options. You'll get our best recommendation, a strong alternate, and the confidence to choose.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 8. HOW WE WORK TOGETHER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="together">
+  <div class="section-label">Section 08</div>
+  <h2>Your Role in the Process</h2>
+  <div class="section-divider"></div>
+  <p>You're the most important part of this process. Here's how we make the most of our time together.</p>
+
+  <h3>Share Openly</h3>
+  <p>The more we know about how you live, what you love, and what drives you crazy, the better we can design for you. There are no wrong answers. Tell us about the morning light you love, the drawer that always jams, the color you can't stand, the heirloom that stays no matter what.</p>
+
+  <h3>Decide with Confidence</h3>
+  <p>When we present options, we guide you through the reasoning. We ask for feedback within 5 to 7 business days so we can keep your project on schedule. Timely decisions are the single biggest factor in keeping timelines on track.</p>
+
+  <h3>Trust the Journey</h3>
+  <p>Great design unfolds in stages. There may be moments when individual pieces don't yet make sense on their own. That's normal. The full picture comes together beautifully. We've done this before, and we'll guide you through every step.</p>
+
+  <h3>Stay Engaged</h3>
+  <p>Attending meetings, responding to communications, and completing action items on time keeps everything moving. We schedule check-ins at natural milestones so you're always in the loop without feeling overwhelmed.</p>
+
+  <h3>Working With Your Builder</h3>
+  <p>If you're doing new construction or a renovation, we work hand-in-hand with your builder. We attend site meetings, coordinate directly on timelines, and make sure design decisions align with construction progress. Your builder will also have portal access for their assigned projects.</p>
+
+  <div class="highlight-box">
+    <p><strong>A note on changes:</strong> We include reasonable revisions in every project. If you change your mind about a selection before it's ordered, no problem. If a major design direction change is needed after approvals, we'll discuss scope and any additional investment transparently before proceeding.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 9. YOUR CLIENT PORTAL -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="portal">
+  <div class="section-label">Section 09</div>
+  <h2>Your Client Portal</h2>
+  <div class="section-divider"></div>
+  <p>Every Element321 client gets access to a private project portal. It's your home base throughout the entire design process: from onboarding through your final reveal.</p>
+
+  <div class="portal-features">
+    <div class="portal-feature">
+      <span class="icon">&#9634;</span>
+      <h4>Project Progress</h4>
+      <p>Track where you are in the design process at a glance. See completed phases and upcoming milestones.</p>
+    </div>
+    <div class="portal-feature">
+      <span class="icon">&#9783;</span>
+      <h4>Finish Schedule</h4>
+      <p>View your complete finish schedule with selections, specifications, and approval statuses.</p>
+    </div>
+    <div class="portal-feature">
+      <span class="icon">&#9733;</span>
+      <h4>Photos &amp; Inspiration</h4>
+      <p>Browse project photos, upload inspiration images, and view shared mood boards.</p>
+    </div>
+    <div class="portal-feature">
+      <span class="icon">&#9997;</span>
+      <h4>Documents</h4>
+      <p>Access contracts, proposals, and important project documents anytime.</p>
+    </div>
+    <div class="portal-feature">
+      <span class="icon">&#128197;</span>
+      <h4>Timeline</h4>
+      <p>See your project timeline with milestones, key dates, and real-time status updates.</p>
+    </div>
+    <div class="portal-feature">
+      <span class="icon">&#9742;</span>
+      <h4>Your Team</h4>
+      <p>Quick access to your design team and builder contacts, all in one place.</p>
+    </div>
+  </div>
+
+  <h3>How to Access Your Portal</h3>
+  <p>You'll receive login credentials via email when your project begins. Your username is your last name and your password is your street number. Bookmark the portal for easy access. You'll use it throughout your entire project.</p>
+
+  <div class="highlight-box">
+    <p><strong>Tip:</strong> Check your portal first for project updates and status. It's always current, and everything you need is in one place.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 10. PORTFOLIO HIGHLIGHTS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="portfolio">
+  <div class="section-label">Section 10</div>
+  <h2>A Glimpse of What's Possible</h2>
+  <div class="section-divider"></div>
+  <p>Every project we take on is unique, but they all share the same foundation: intentional design, quality materials, and spaces that feel like home from the moment you walk in.</p>
+
+  <h3>Hill Country Estate</h3>
+  <p>A new construction project featuring warm wood and stone, modern Hill Country architecture, and interiors designed for a family that loves to entertain. Every room balances sophistication with comfort, from the chef's kitchen with emerald green backsplash to the spa-inspired primary bath.</p>
+
+  <h3>Modern Farmhouse Kitchen</h3>
+  <p>A full kitchen renovation centered on a teal island, oak floors, and curated pendant lighting. The design brings warmth and personality to a space that was previously builder-grade, transforming it into the heart of the home.</p>
+
+  <h3>Spa-Inspired Primary Bath</h3>
+  <p>A primary bathroom designed around natural oak vanities, patchwork zellige tiles, and champagne bronze fixtures. The result is a calming retreat that feels luxurious without being precious.</p>
+
+  <div class="pull-quote">
+    <p>We don't just design beautiful rooms. We create spaces where real life happens beautifully.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 11. TESTIMONIALS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="testimonials">
+  <div class="section-label">Section 11</div>
+  <h2>Kind Words from Our Clients</h2>
+  <div class="section-divider"></div>
+
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <p>Working with Heather and Rachel was one of the best decisions we made during our build. They took the stress out of every finish decision and made the whole process actually enjoyable. Our home feels exactly like us.</p>
+      <span class="client-name">&mdash; Client Testimonial</span>
+    </div>
+    <div class="testimonial">
+      <p>I was nervous about the investment, but Element321 made us feel confident from day one. They listened to what we wanted, respected our budget, and delivered something more beautiful than we imagined. The kids' rooms are their favorite place in the house.</p>
+      <span class="client-name">&mdash; Client Testimonial</span>
+    </div>
+    <div class="testimonial">
+      <p>The portal made everything so easy. We could see exactly where we were in the process, review our selections, and never felt out of the loop. It was like having a designer and a project manager rolled into one. Highly recommend.</p>
+      <span class="client-name">&mdash; Client Testimonial</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Note:</strong> These are placeholder testimonials. Heather and Rachel will replace them with real client quotes and names as they become available.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 12. FAQ -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="faq">
+  <div class="section-label">Section 12</div>
+  <h2>Frequently Asked Questions</h2>
+  <div class="section-divider"></div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>What if I don't like a design direction?</h4>
+      <p>We include revision rounds in every project phase. If something doesn't feel right, tell us early. We'd much rather adjust course than have you live with something you don't love. Honest feedback is the best feedback.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I source my own items?</h4>
+      <p>We're happy to incorporate pieces you've found or already own. Just let us know early so we can integrate them into the design plan. We'll give you our honest assessment of how they'll work in the overall scheme.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What happens if something is back-ordered or delayed?</h4>
+      <p>Supply chain realities mean occasional delays are normal. When this happens, we proactively source alternatives, adjust the installation schedule, or find creative interim solutions. We'll always keep you informed.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do you work with our contractor or architect?</h4>
+      <p>Absolutely. We collaborate closely with builders, architects, and other vendors. For new construction and renovations, this coordination is essential. We attend site meetings, share specifications, and keep everyone aligned.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What if our budget changes mid-project?</h4>
+      <p>Life happens. If your budget shifts, let us know as soon as possible. We'll reprioritize selections and adjust the plan to stay within your new parameters without compromising the overall design vision.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What happens after installation?</h4>
+      <p>We don't disappear after reveal day. We'll follow up to make sure everything is perfect and address any items that need attention. Many clients continue working with us on additional spaces over time.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How do I prepare for our first meeting?</h4>
+      <p>Complete the Inspiration Homework section of this guide, think about how you use your spaces daily, and bring any Pinterest boards or saved images you love. The more we know about your taste and lifestyle, the better we can design for you.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What makes Element321 different?</h4>
+      <p>You work directly with Heather and Rachel from start to finish. No hand-offs, no junior designers making decisions on your behalf. Every project gets our full attention, and we genuinely care about creating something you'll love for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 13. INVESTMENT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="guide-section" id="investment">
+  <div class="section-label">Section 13</div>
+  <h2>Your Investment</h2>
+  <div class="section-divider"></div>
+  <p>Design is an investment in how you live every single day. We offer several service levels to match different project scopes and budgets, and we're always transparent about costs from the start.</p>
+
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-name">Room Refresh</div>
+      <div class="price">From $X,XXX</div>
+      <div class="tier-desc">A focused update for one room or area.</div>
+      <ul>
+        <li>Style assessment and direction</li>
+        <li>Furniture and accessory selections</li>
+        <li>Color and textile updates</li>
+        <li>Shopping and sourcing</li>
+        <li>One-day installation and styling</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Full-Service Design</div>
+      <div class="price">From $XX,XXX</div>
+      <div class="tier-desc">Comprehensive design from concept through installation.</div>
+      <ul>
+        <li>Complete space planning</li>
+        <li>All finish and material selections</li>
+        <li>Furniture, lighting, and accessories</li>
+        <li>Vendor and contractor coordination</li>
+        <li>Procurement and project management</li>
+        <li>Professional installation and styling</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">New Construction</div>
       <div class="price">Custom Quote</div>
-      <p>Complete finish and furnishing selections for your new build.</p>
+      <div class="tier-desc">Complete finish and furnishing selections for your new build.</div>
+      <ul>
+        <li>Architectural finish review</li>
+        <li>Interior and exterior selections</li>
+        <li>Fixture and hardware specification</li>
+        <li>Builder coordination and site visits</li>
+        <li>Furniture planning for move-in</li>
+        <li>Full installation and reveal</li>
+      </ul>
     </div>
   </div>
 
   <h3>How Billing Works</h3>
-  <p>We typically structure payments in phases: an initial design retainer, a midpoint payment at selection approval, and a final payment before installation. Furnishing and material costs are billed separately as items are ordered.</p>
+  <p>We structure payments in phases: an initial design retainer to begin, a midpoint payment at selection approval, and a final payment before installation. Furnishing and material costs are billed separately as items are ordered.</p>
+  <p>Design fees are separate from product costs. Industry guidance suggests budgeting design services at roughly 10% of your overall project investment, though this varies by scope.</p>
 
   <div class="highlight-box">
-    <p>We're transparent about costs from the start. You'll always know what to expect before we move forward, and there are never surprise fees.</p>
+    <p><strong>No surprises.</strong> You'll always know what to expect before we move forward. We discuss investment openly and honestly because we believe trust is the foundation of great design.</p>
   </div>
 </section>
 
-<!-- 6. INSPIRATION HOMEWORK -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 14. INSPIRATION HOMEWORK -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="guide-section" id="homework">
-  <div class="section-number">Section 06</div>
+  <div class="section-label">Section 14</div>
   <h2>Inspiration Homework</h2>
-  <p>Before we dive into design, we'd love to see what speaks to you. This helps us understand your taste faster and ensures we're aligned from the start.</p>
+  <div class="section-divider"></div>
+  <p>Before we dive into design, we'd love to see what speaks to you. This helps us understand your taste faster and ensures we're aligned from the very start. Don't overthink it. If you love it, save it.</p>
 
-  <h3>Your Assignment</h3>
   <ul class="checklist">
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Collect 10+ inspiration photos</strong> from Houzz, Pinterest, Instagram, magazines, or anywhere you find beautiful spaces. Don't overthink it. If you love it, save it.</span>
+      <span class="check-text"><strong>Collect 10+ inspiration photos.</strong> From Houzz, Pinterest, Instagram, magazines, or anywhere you find beautiful spaces. Save kitchens, bathrooms, living rooms, textures, colors, moods. The more variety, the better we can find patterns in what you're drawn to.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Follow @element321design on Instagram</strong> to see our latest projects and behind-the-scenes process. We share a lot of design thinking in our Stories.</span>
+      <span class="check-text"><strong>Create or share a Pinterest board.</strong> If you already have one, send us the link. If not, start a board called "Element321 Inspo" and pin anything that catches your eye. We'll review it together.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Follow Element321 on Pinterest</strong> and browse our curated boards. Feel free to save anything that catches your eye to your own boards.</span>
+      <span class="check-text"><strong>Follow @element321design on Instagram.</strong> See our latest projects and behind-the-scenes process. We share a lot of design thinking in our Stories.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Note what you want to feel</strong> in each room. Cozy? Bright? Calm? Energized? The emotional quality matters as much as the visual style.</span>
+      <span class="check-text"><strong>Follow Element321 on Pinterest.</strong> Browse our curated boards for style inspiration. Feel free to save anything that resonates to your own boards.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Think about how you use each space.</strong> Where does the family hang out most? Where do you work? Where do the kids do homework? Where does the dog sleep?</span>
+      <span class="check-text"><strong>Note what you want to feel in each room.</strong> Cozy? Bright? Calm? Energized? Moody? The emotional quality matters as much as the visual style. Write a few words for each room we'll be designing.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Identify any must-haves and dealbreakers.</strong> Is there a family heirloom that stays? A color you absolutely can't stand? A material you've always dreamed of? Tell us everything.</span>
+      <span class="check-text"><strong>Think about how you use each space.</strong> Where does the family hang out most? Where do you work? Where do the kids do homework? Where does the dog sleep? Where do guests gravitate? These patterns shape design decisions.</span>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <span class="check-text"><strong>Identify must-haves and dealbreakers.</strong> Family heirloom that stays? Color you absolutely can't stand? Material you've always dreamed of? Furniture piece you love but can't figure out where it goes? Tell us everything.</span>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <span class="check-text"><strong>Take photos of your current space.</strong> Even if it's messy. Snap wide shots of each room, plus close-ups of anything specific (a layout problem, a feature you love, a view you want to highlight). Upload them to your portal.</span>
     </li>
   </ul>
 
   <div class="highlight-box">
-    <p>Upload your inspiration photos to the Photos &amp; Inspiration section of your client portal, or create a shared Pinterest board and send us the link. The more we see, the better we can design for you.</p>
+    <p><strong>Where to submit:</strong> Upload inspiration photos and space photos to the Photos &amp; Inspiration section of your client portal. Or create a shared Pinterest board and send us the link at <a href="mailto:hello@element321design.com" style="color: var(--sage-dark);">hello@element321design.com</a>.</p>
   </div>
 </section>
 
-<!-- 7. NEXT STEPS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 15. NEXT STEPS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="guide-section" id="next">
-  <div class="section-number">Section 07</div>
-  <h2>Next Steps</h2>
-  <p>You're all set to get started. Here's what happens next:</p>
+  <div class="section-label">Section 15</div>
+  <h2>Let's Get Started</h2>
+  <div class="section-divider"></div>
+  <p>You've read the guide, you know how we work, and your dream space is closer than you think. Here's what to do next:</p>
 
   <ul class="checklist">
     <li>
@@ -65,34 +1521,49 @@ ard">
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Upload your inspiration photos</strong> and share any Pinterest boards, Houzz ideabooks, or saved Instagram posts you love.</span>
+      <span class="check-text"><strong>Complete your Inspiration Homework</strong> from Section 14 above. Upload photos, share your Pinterest board, and write down how you want each room to feel.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Save our contact info to your phone.</strong> Heather: <a href="mailto:heather@element321design.com">heather@element321design.com</a>. Rachel: <a href="mailto:rachel@element321design.com">rachel@element321design.com</a>. Studio: <a href="tel:7206332449">(720) 633-2449</a>.</span>
+      <span class="check-text"><strong>Save our contact info to your phone.</strong> Heather: <a href="mailto:heather@element321design.com" style="color: var(--sage-dark);">heather@element321design.com</a>. Rachel: <a href="mailto:rachel@element321design.com" style="color: var(--sage-dark);">rachel@element321design.com</a>. Studio: <a href="tel:7206332449" style="color: var(--sage-dark);">(720) 633-2449</a>.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Bookmark your portal</strong> for easy access. You'll be visiting it throughout the project for updates, approvals, and more.</span>
+      <span class="check-text"><strong>Set your communication preferences.</strong> Let us know whether you prefer email updates at <a href="mailto:hello@element321design.com" style="color: var(--sage-dark);">hello@element321design.com</a>, and make sure to CC heather@ and rachel@ on project correspondence.</span>
     </li>
     <li>
       <span class="check-icon">&#10003;</span>
-      <span class="check-text"><strong>Sit back and get excited.</strong> We'll schedule your Discovery Call and take it from there. You're in great hands.</span>
+      <span class="check-text"><strong>Bookmark your portal</strong> for easy access. You'll be visiting it throughout the project for updates, selections, approvals, and more.</span>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <span class="check-text"><strong>Get excited.</strong> We'll schedule your Discovery session and take it from there. You're in great hands, and something beautiful is about to happen.</span>
     </li>
   </ul>
+
+  <div class="pull-quote">
+    <p>This is the beginning of something special. We're honored to be part of your story, and we can't wait to see your space come to life.</p>
+    <span class="attribution">Heather &amp; Rachel, Element321</span>
+  </div>
 </section>
 
-<!-- CONTACT BLOCK -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CONTACT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <div class="contact-block">
   <h3>Questions? We're Here.</h3>
-  <p><a href="mailto:hello@element321design.com">hello@element321design.com</a> &nbsp;&middot;&nbsp; <a href="tel:7206332449">(720) 633-2449</a></p>
-  <p style="margin-top: 0.5rem;">700 South Austin Avenue, Georgetown, Texas 78626</p>
+  <p><a href="mailto:hello@element321design.com">hello@element321design.com</a></p>
+  <p><a href="tel:7206332449">(720) 633-2449</a></p>
+  <p style="margin-top: 0.75rem; font-size: 0.82rem;">700 South Austin Avenue, Georgetown, Texas 78626</p>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════ -->
 <!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <footer class="guide-footer">
   <div class="logo-small">Element321</div>
-  <p>&copy; 2026 Element321 Interior Design. All rights reserved.</p>
+  <p>Imagine &middot; Design &middot; Create</p>
+  <p style="margin-top: 0.5rem;">&copy; 2026 Element321 Interior Design. All rights reserved.</p>
 </footer>
 
 </body>
