@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element321 Interior Design | Georgetown, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --warm-white: #F7F7F7;
+  --cream: #F7F7F7;
+  --sage: #C6B9B0;
+  --sage-light: #D1C7C1;
+  --sage-dark: #B8A99A;
+  --taupe: #C6B9B0;
+  --taupe-light: #D1C7C1;
+  --charcoal: #161616;
+  --charcoal-light: #333231;
+  --warm-gray: #808080;
+  --white: #FFFFFF;
+  --font-heading: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  background: var(--warm-white);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.nav.scrolled {
+  background: rgba(250, 248, 245, 0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 0.85rem 3rem;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+.nav.scrolled .nav-logo { color: var(--charcoal); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--sage);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav.scrolled .nav-links a { color: var(--charcoal-light); }
+.nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+
+.nav-links .nav-cta {
+  background: var(--sage);
+  color: var(--white) !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+}
+
+.nav-links .nav-cta::after { display: none; }
+.nav-links .nav-cta:hover { background: var(--sage-dark); }
+
+.nav-links .nav-login {
+  color: rgba(255,255,255,0.7) !important;
+  font-size: 0.68rem;
+  letter-spacing: 1.2px;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.5rem 1.15rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-links .nav-login::after { display: none; }
+.nav-links .nav-login:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: var(--white) !important;
+}
+.nav.scrolled .nav-links .nav-login {
+  color: var(--charcoal-light) !important;
+  border-color: var(--taupe-light);
+}
+.nav.scrolled .nav-links .nav-login:hover {
+  border-color: var(--sage);
+  color: var(--sage-dark) !important;
+}
+
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+/* ── LOGIN MODAL ── */
+.login-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(44, 44, 44, 0.55);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+}
+.login-overlay.active { display: flex; }
+
+.login-modal {
+  background: var(--white);
+  padding: 3.5rem 3rem;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.15);
+  animation: modalIn 0.35s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.login-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--warm-gray);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.login-modal-close:hover { color: var(--charcoal); }
+
+.login-modal .login-logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.login-modal h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.login-modal .login-desc {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.login-modal input[type="text"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--taupe-light);
+  text-align: center;
+  letter-spacing: 4px;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.3s;
+  margin-bottom: 1.25rem;
+}
+.login-modal input[type="text"]::placeholder {
+  letter-spacing: 1px;
+  color: var(--taupe-light);
+  font-weight: 300;
+}
+.login-modal input[type="text"]:focus { border-color: var(--sage); }
+
+.login-modal .btn-login {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--sage);
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1.5rem;
+}
+.login-modal .btn-login:hover { background: var(--sage-dark); }
+
+.login-modal .login-help {
+  font-size: 0.78rem;
+  color: var(--warm-gray);
+  font-weight: 300;
+}
+.login-modal .login-help a {
+  color: var(--sage-dark);
+  text-decoration: none;
+}
+.login-modal .login-help a:hover { text-decoration: underline; }
+
+/* ── HERO ── */
+.hero {
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg,
+      #3d3028 0%,
+      #5a4a3a 25%,
+      #6b5d4f 40%,
+      #5a4a3a 60%,
+      #4a3d35 75%,
+      #2c2520 100%
+    );
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(180, 165, 140, 0.3), transparent 70%),
+    radial-gradient(ellipse at 70% 30%, rgba(198, 185, 176, 0.2), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.35));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-brand {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 8px;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--sage-light);
+  margin: 0 auto 2.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--sage);
+  border: none;
+  padding: 1rem 2.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.btn-primary:hover {
+  background: var(--sage-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: transparent;
+  border: 1px solid var(--taupe);
+  padding: 1rem 2.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.btn-outline:hover {
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--charcoal);
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 7rem 2rem;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+
+.about-intro {
+  max-width: 750px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.about-intro p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 2;
+  color: var(--charcoal-light);
+}
+
+.about-philosophy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+}
+
+.philosophy-item {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.philosophy-item h4 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: var(--charcoal);
+}
+
+.philosophy-item p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.team-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 auto 1.75rem;
+  background: linear-gradient(135deg, var(--sage-light) 0%, var(--taupe-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--white);
+  font-weight: 400;
+}
+
+.team-name {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.team-role {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+}
+
+.team-bio {
+  font-size: 0.9rem;
+  color: var(--charcoal-light);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── DESIGN PROCESS GRAPHIC ── */
+.design-process {
+  background: var(--cream);
+  padding: 7rem 2rem;
+  overflow: hidden;
+}
+
+.process-flow {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 3rem 0 2rem;
+}
+
+/* Connecting line */
+.process-flow-line {
+  position: absolute;
+  top: 72px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sage-light), var(--sage), var(--sage-light));
+  z-index: 0;
+}
+
+.process-flow-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  max-width: 140px;
+  position: relative;
+}
+
+.flow-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--sage-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.flow-step:hover .flow-icon {
+  background: var(--sage);
+  border-color: var(--sage);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(198,185,176,0.4);
+}
+
+.flow-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--sage-dark);
+  stroke-width: 1.5;
+  fill: none;
+  transition: stroke 0.4s;
+}
+
+.flow-step:hover .flow-icon svg {
+  stroke: var(--white);
+}
+
+.flow-step-num {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.4rem;
+}
+
+.flow-step h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.flow-step p {
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Mobile: stack process steps */
+@media (max-width: 968px) {
+  .process-flow-line { display: none; }
+  .process-flow-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .flow-step {
+    max-width: 280px;
+    flex-direction: row;
+    text-align: left;
+    gap: 1.25rem;
+  }
+  .flow-icon { min-width: 60px; width: 60px; height: 60px; margin-bottom: 0; }
+  .flow-step-info { flex: 1; }
+}
+
+/* ── SERVICES ── */
+.services { background: var(--warm-white); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 2.75rem 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+  border-color: var(--sage-light);
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--sage);
+  stroke-width: 1;
+  fill: none;
+}
+
+.service-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--charcoal);
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── PORTFOLIO ── */
+.portfolio { background: var(--cream); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  background: linear-gradient(135deg, #c4b8aa 0%, #C6B9B0 50%, #bfb2a3 100%);
+}
+
+.portfolio-card:nth-child(2) { background: linear-gradient(135deg, #b0a696 0%, #C6B9B0 50%, #c9bfb3 100%); }
+.portfolio-card:nth-child(3) { background: linear-gradient(135deg, #B8A99A 0%, #b5a898 50%, #D1C7C1 100%); }
+.portfolio-card:nth-child(4) { background: linear-gradient(145deg, #bdb1a3 0%, #C6B9B0 50%, #c2b7ab 100%); }
+.portfolio-card:nth-child(5) { background: linear-gradient(120deg, #D1C7C1 0%, #c0b3a5 50%, #C6B9B0 100%); }
+.portfolio-card:nth-child(6) { background: linear-gradient(160deg, #c7bdb0 0%, #B8A99A 50%, #b8ad9f 100%); }
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 44, 44, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  background: rgba(44, 44, 44, 0.6);
+}
+
+.portfolio-info {
+  text-align: center;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.portfolio-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-info span {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--white); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  padding: 2.5rem;
+  background: var(--warm-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.testimonial-quote-mark {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--sage-light);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-text {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--charcoal-light);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.testimonial-stars {
+  color: var(--taupe);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.testimonial-location {
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, #3d3028 0%, #5a4a3a 50%, #4a3d35 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.cta-banner p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.cta-banner .btn-primary {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.cta-banner .btn-primary:hover {
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+/* ── CONTACT ── */
+.contact { background: var(--warm-white); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.form-group { display: flex; flex-direction: column; }
+
+.form-group label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--taupe-light);
+  background: var(--white);
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sage);
+}
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.contact-info { padding-top: 0.5rem; }
+
+.contact-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.contact-detail {
+  margin-bottom: 1.75rem;
+}
+
+.contact-detail h4 {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.4rem;
+}
+
+.contact-detail p, .contact-detail a {
+  font-size: 0.92rem;
+  color: var(--charcoal-light);
+  font-weight: 300;
+  text-decoration: none;
+  line-height: 1.7;
+}
+
+.contact-detail a:hover { color: var(--sage-dark); }
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.social-links a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--taupe-light);
+  color: var(--charcoal-light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.social-links a:hover {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--white);
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.5);
+  padding: 3.5rem 2rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 2px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.footer-nav a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover { color: rgba(255,255,255,0.8); }
+
+.footer-copy {
+  font-size: 0.78rem;
+  font-weight: 300;
+}
+
+/* ── ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 968px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--warm-white);
+    padding: 5rem 2.5rem 2rem;
+    gap: 1.5rem;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+  }
+  .nav-links.open a {
+    color: var(--charcoal) !important;
+    font-size: 0.85rem;
+  }
+  .nav-toggle { display: flex; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 550px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .team-grid { gap: 2rem; }
+  .about-philosophy { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  section { padding: 5rem 1.5rem; }
+  .design-process { padding: 5rem 1.5rem; }
+  .nav { padding: 1rem 1.5rem; }
+  .nav.scrolled { padding: 0.75rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN MODAL -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-modal">
+    <button class="login-modal-close" onclick="closeLogin()">&times;</button>
+    <div class="login-logo">Element321</div>
+    <h2>Welcome Back</h2>
+    <p class="login-desc">Enter your project PIN<br><span style="font-size: 0.75rem; color: var(--taupe);">(the street number of your address)</span></p>
+    <input type="text" id="pinInput" placeholder="e.g. 1847" maxlength="6" autocomplete="off">
+    <button class="btn-login" onclick="handleLogin()">Log In</button>
+    <p class="login-help">Don't have a PIN? <a href="#contact">Contact us</a></p>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo">Element321</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#design-process">Process</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="javascript:void(0)" class="nav-login" onclick="openLogin()">Client Login</a></li>
+    <li><a href="#contact" class="nav-cta">Start Your Project</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1 class="hero-brand">Element321</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Designed for Living.</p>
+    <a href="#contact" class="btn-primary">Start Your Project</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label fade-in">Who We Are</div>
+    <h2 class="section-title fade-in">Beautiful Spaces, Real Life</h2>
+    <div class="about-intro fade-in">
+      <p>We believe your home should be as beautiful as it is livable. At Element321, we design interiors that reflect who you are and how you actually live. No showrooms. No untouchable rooms. Just thoughtful, layered spaces where families gather, memories happen, and every detail feels intentional.</p>
+    </div>
+
+    <div class="about-philosophy fade-in">
+      <div class="philosophy-item">
+        <h4>Intentional</h4>
+        <p>Every choice serves a purpose. We design with care, ensuring each element earns its place.</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>Personal</h4>
+        <p>Your home is uniquely yours. We listen closely to craft spaces that reflect your family's story.</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>Livable</h4>
+        <p>Beauty that works in real life. Spaces built for morning coffee, family dinners, and everything between.</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card fade-in fade-in-delay-1">
+        <div class="team-photo">HS</div>
+        <h3 class="team-name">Heather Smith</h3>
+        <div class="team-role">Founder &amp; Principal Designer</div>
+        <p class="team-bio">With a deep love for design and an eye for what makes a space feel like home, Heather founded Element321 to bring thoughtful, livable interiors to Central Texas families. She leads every project with warmth, precision, and a commitment to getting the details right. When she's not sourcing the perfect piece, she's at home in Georgetown with her husband and two daughters.</p>
+      </div>
+      <div class="team-card fade-in fade-in-delay-2">
+        <div class="team-photo">RM</div>
+        <h3 class="team-name">Rachel Mazur</h3>
+        <div class="team-role">Designer &amp; Brand Manager</div>
+        <p class="team-bio">A native Austinite with an instinct for style and storytelling, Rachel brings a keen creative vision to every project. She manages the Element321 brand and works alongside Heather to deliver cohesive designs that feel effortless and elevated. A mom of two, Rachel draws constant inspiration from how real families live and what they need from their spaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PROCESS GRAPHIC -->
+<section class="design-process" id="design-process">
+  <div class="container">
+    <div class="section-label fade-in">Our Process</div>
+    <h2 class="section-title fade-in">From Vision to Reveal</h2>
+    <p class="section-subtitle fade-in">A thoughtful, seven-step journey to bring your space to life.</p>
+
+    <div class="process-flow fade-in">
+      <div class="process-flow-line"></div>
+      <div class="process-flow-steps">
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><path d="M20 26c6-3 9-8 9-14a3 3 0 0 0-3-3c-2 0-3.5 1.5-4 3-.5-1.5-2-3-4-3a3 3 0 0 0-3 3c0 6 3 11 9 14z" transform="rotate(-30 18 16)"/><path d="M3 28l4-4m0 0l2-8 8-2-4 4"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 1</div>
+            <h4>Discovery Call</h4>
+            <p>We get to know you, your style, and your goals</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><circle cx="10" cy="22" r="5"/><circle cx="22" cy="22" r="5"/><circle cx="16" cy="12" r="5"/><circle cx="16" cy="18" r="2" fill="var(--taupe)" stroke="none"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 2</div>
+            <h4>Design Concept</h4>
+            <p>We develop a design direction and mood for your space</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><path d="M6 8h20v18H6z"/><path d="M6 8l4-4h12l4 4"/><line x1="6" y1="14" x2="26" y2="14"/><circle cx="12" cy="20" r="2"/><circle cx="20" cy="20" r="2"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 3</div>
+            <h4>Selections &amp; Sourcing</h4>
+            <p>We curate materials, furnishings, and finishes</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="16" rx="1"/><line x1="4" y1="22" x2="28" y2="22"/><path d="M10 26h12"/><path d="M16 22v4"/><path d="M10 12h4m-4 3h8"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 4</div>
+            <h4>Design Presentation</h4>
+            <p>We present the complete design for your review</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><path d="M8 4h16v24H8z"/><line x1="12" y1="9" x2="20" y2="9"/><line x1="12" y1="13" x2="20" y2="13"/><line x1="12" y1="17" x2="18" y2="17"/><path d="M11 21l2 2 4-4"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 5</div>
+            <h4>Project Management</h4>
+            <p>We coordinate with builders and vendors</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><path d="M4 28h24"/><path d="M8 28V14l8-6 8 6v14"/><rect x="13" y="20" width="6" height="8"/><rect x="11" y="14" width="4" height="4"/><rect x="17" y="14" width="4" height="4"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 6</div>
+            <h4>Installation &amp; Styling</h4>
+            <p>We bring your space to life</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 32 32"><path d="M16 4l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/><circle cx="16" cy="16" r="10" stroke-dasharray="3 2"/></svg>
+          </div>
+          <div class="flow-step-info">
+            <div class="flow-step-num">Step 7</div>
+            <h4>The Reveal</h4>
+            <p>Welcome to your new favorite place</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label fade-in">What We Do</div>
+    <h2 class="section-title fade-in">Our Services</h2>
+    <p class="section-subtitle fade-in">From a single room to an entire home, we bring clarity, beauty, and intention to every project.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="24" rx="2"/><line x1="6" y1="38" x2="6" y2="42"/><line x1="42" y1="38" x2="42" y2="42"/><line x1="6" y1="26" x2="42" y2="26"/><path d="M16 14V8h16v6"/></svg>
+        </div>
+        <h3>Full-Service Interior Design</h3>
+        <p>Comprehensive design from concept through installation. We handle space planning, sourcing, procurement, and styling so you can enjoy the transformation without the stress.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6"/><circle cx="24" cy="24" r="8"/></svg>
+        </div>
+        <h3>Room Refresh</h3>
+        <p>Ready for a change but not a full renovation? We reimagine your existing space with updated furnishings, color, and styling that make it feel brand new.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><path d="M4 42h40"/><path d="M8 42V16l16-10 16 10v26"/><rect x="18" y="28" width="12" height="14"/><rect x="14" y="18" width="8" height="6"/><rect x="26" y="18" width="8" height="6"/></svg>
+        </div>
+        <h3>New Construction</h3>
+        <p>Building from scratch? We partner with you and your builder from the earliest stages to select finishes, fixtures, and furnishings that create a cohesive, move-in-ready home.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-4">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><path d="M8 38V18l8-8h16l8 8v20"/><path d="M4 42h40"/><line x1="16" y1="42" x2="16" y2="26"/><line x1="32" y1="42" x2="32" y2="26"/><line x1="16" y1="26" x2="32" y2="26"/><path d="M20 26v-6h8v6"/></svg>
+        </div>
+        <h3>Renovation Design</h3>
+        <p>Renovating requires a vision for how everything comes together. We guide the design direction through every decision, from layout changes to the finishing touches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-label fade-in">Our Work</div>
+    <h2 class="section-title fade-in">Selected Projects</h2>
+    <p class="section-subtitle fade-in">A glimpse into the homes we've had the privilege of designing.</p>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-in fade-in-delay-1">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Rock Nettle</h3>
+            <span>Full-Service Design</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-2">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Lower Peninsula</h3>
+            <span>New Construction</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-3">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Modern Farmhouse</h3>
+            <span>Renovation Design</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-1">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Country Club</h3>
+            <span>Full-Service Design</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-2">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Forest Street</h3>
+            <span>Room Refresh</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-3">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Westview Estate</h3>
+            <span>New Construction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-label fade-in">Kind Words</div>
+    <h2 class="section-title fade-in">What Our Clients Say</h2>
+    <p class="section-subtitle fade-in">We're proud that 100% of our business comes from referrals and repeat clients.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="testimonial-text">Heather and Rachel completely transformed our home. They listened to everything we wanted and delivered something even better than we imagined. Every room feels like us, just elevated.</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <div class="testimonial-author">Lauren Mitchell</div>
+        <div class="testimonial-location">Georgetown, TX</div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="testimonial-text">Working with Element321 was the best decision we made during our build. They thought of details we never would have considered and made the entire process feel seamless. Our builder loved them too.</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <div class="testimonial-author">David &amp; Sarah Kowalski</div>
+        <div class="testimonial-location">Round Rock, TX</div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-3">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="testimonial-text">We hired them for our living room refresh and ended up doing the whole first floor. They're that good. Professional, warm, and genuinely talented. We've already referred three friends.</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <div class="testimonial-author">Jennifer Reeves</div>
+        <div class="testimonial-location">Cedar Park, TX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Love Your Home?</h2>
+  <p>Let's talk about your space and explore what's possible together.</p>
+  <a href="#contact" class="btn-primary">Get in Touch</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label fade-in">Get Started</div>
+    <h2 class="section-title fade-in">Start Your Project</h2>
+    <p class="section-subtitle fade-in">Tell us about your space and we'll be in touch within one business day.</p>
+
+    <div class="contact-grid">
+      <form class="contact-form fade-in" onsubmit="event.preventDefault(); alert('Thank you! We\'ll be in touch soon.');">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(512) 555-0000">
+        </div>
+        <div class="form-group">
+          <label for="project">Project Type</label>
+          <select id="project" name="project">
+            <option value="" disabled selected>Select a service</option>
+            <option value="full-service">Full-Service Interior Design</option>
+            <option value="room-refresh">Room Refresh</option>
+            <option value="new-construction">New Construction</option>
+            <option value="renovation">Renovation Design</option>
+            <option value="not-sure">Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Project</label>
+          <textarea id="message" name="message" placeholder="What are you looking to create?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="border: none; width: fit-content;">Send Message</button>
+      </form>
+
+      <div class="contact-info fade-in fade-in-delay-2">
+        <h3>Let's Connect</h3>
+        <div class="contact-detail">
+          <h4>Studio</h4>
+          <p>700 South Austin Avenue<br>Georgetown, Texas 78626</p>
+        </div>
+        <div class="contact-detail">
+          <h4>Phone</h4>
+          <a href="tel:7206332449">(720) 633-2449</a>
+        </div>
+        <div class="contact-detail">
+          <h4>Email</h4>
+          <a href="mailto:hello@element321design.com">hello@element321design.com</a>
+        </div>
+        <div class="contact-detail">
+          <h4>Hours</h4>
+          <p>Monday - Friday: 9am - 5pm<br>Weekends: By appointment</p>
+        </div>
+        <div class="contact-detail">
+          <h4>Service Area</h4>
+          <p>Georgetown, Austin, Round Rock,<br>Cedar Park &amp; Central Texas</p>
+        </div>
+        <div class="social-links">
+          <a href="https://instagram.com/element321design" target="_blank" title="Instagram">IG</a>
+          <a href="https://pinterest.com/element321design" target="_blank" title="Pinterest">PI</a>
+          <a href="https://houzz.com/element321design" target="_blank" title="Houzz">HZ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">Element321</div>
+    <ul class="footer-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#design-process">Process</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Element321 Interior Design. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Scroll-based nav styling
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Mobile menu toggle
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Login modal
+function openLogin() {
+  document.getElementById('loginOverlay').classList.add('active');
+  setTimeout(() => document.getElementById('pinInput').focus(), 100);
+}
+function closeLogin() {
+  document.getElementById('loginOverlay').classList.remove('active');
+  document.getElementById('pinInput').value = '';
+}
+function handleLogin() {
+  const pin = document.getElementById('pinInput').value.trim();
+  if (pin) {
+    alert('Welcome! Redirecting to your project portal...');
+    closeLogin();
+  }
+}
+// Close on overlay click
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeLogin();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLogin();
+});
+// Enter key in PIN input
+document.getElementById('pinInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleLogin();
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
