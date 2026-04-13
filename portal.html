@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element321 | Client Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --warm-white: #F7F7F7;
+  --cream: #F7F7F7;
+  --sage: #C6B9B0;
+  --sage-light: #D1C7C1;
+  --sage-dark: #B8A99A;
+  --sage-bg: #F0ECEA;
+  --taupe: #C6B9B0;
+  --taupe-light: #D1C7C1;
+  --charcoal: #161616;
+  --charcoal-light: #333231;
+  --warm-gray: #808080;
+  --white: #FFFFFF;
+  --border: #E8E4DF;
+  --font-heading: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --green: #4A9D6E;
+  --green-bg: #E8F5E9;
+  --yellow: #D4A026;
+  --yellow-bg: #FFF8E1;
+  --blue: #5B8DB8;
+  --blue-bg: #E3F2FD;
+  --gray-badge: #9E9E9E;
+  --gray-badge-bg: #F5F5F5;
+  --sidebar-w: 260px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  background: var(--warm-white);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════ LOGIN SCREEN ═══════════════ */
+.login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--warm-white);
+  position: relative;
+}
+
+.login-screen.hidden { display: none; }
+
+.login-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--sage) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, var(--taupe) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.login-card {
+  background: var(--white);
+  padding: 4rem 3.5rem;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.login-card .logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.login-card .logo-sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 2.5rem;
+}
+
+.login-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.login-card .login-desc {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.login-card .login-hint {
+  font-size: 0.72rem;
+  color: var(--taupe);
+  margin-top: -1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-card input[type="text"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding: 1.1rem 1.5rem;
+  border: 1.5px solid var(--border);
+  text-align: center;
+  letter-spacing: 6px;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.3s;
+  margin-bottom: 1.5rem;
+  background: var(--warm-white);
+}
+.login-card input[type="text"]::placeholder {
+  letter-spacing: 1px;
+  color: var(--taupe-light);
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+.login-card input[type="text"]:focus { border-color: var(--sage); }
+
+.login-card .btn-login {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--sage);
+  border: none;
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1.75rem;
+}
+.login-card .btn-login:hover { background: var(--sage-dark); }
+
+.login-card .login-help {
+  font-size: 0.78rem;
+  color: var(--warm-gray);
+  font-weight: 300;
+}
+.login-card .login-help a {
+  color: var(--sage-dark);
+  text-decoration: none;
+}
+.login-card .login-help a:hover { text-decoration: underline; }
+
+/* ═══════════════ PORTAL SHELL ═══════════════ */
+.portal { display: none; min-height: 100vh; }
+.portal.active { display: flex; }
+
+/* Top Bar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.topbar-logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--charcoal);
+}
+
+.topbar-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+
+.topbar-project {
+  font-size: 0.82rem;
+  color: var(--charcoal-light);
+  font-weight: 400;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.role-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  background: var(--sage-bg);
+  color: var(--sage-dark);
+}
+
+.topbar-user {
+  font-size: 0.82rem;
+  color: var(--charcoal-light);
+  font-weight: 400;
+}
+
+.btn-logout {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-logout:hover {
+  border-color: var(--charcoal-light);
+  color: var(--charcoal);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  padding: 2rem 0;
+  overflow-y: auto;
+}
+
+.sidebar-nav { list-style: none; }
+
+.sidebar-nav li {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--charcoal-light);
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+
+.sidebar-nav a:hover {
+  background: var(--warm-white);
+  color: var(--charcoal);
+}
+
+.sidebar-nav a.active {
+  background: var(--sage-bg);
+  color: var(--sage-dark);
+  font-weight: 500;
+  border-left-color: var(--sage);
+}
+
+.sidebar-nav .nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.sidebar-section-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--taupe);
+  padding: 1.5rem 1.75rem 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: var(--sidebar-w);
+  margin-top: 64px;
+  padding: 2.5rem 3rem;
+  min-height: calc(100vh - 64px);
+  background: var(--warm-white);
+}
+
+/* ═══════════════ PAGE: DASHBOARD ═══════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+.project-header {
+  margin-bottom: 2rem;
+}
+
+.project-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.25rem;
+}
+
+.project-header .project-address {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+  font-weight: 300;
+}
+
+/* Progress Bar */
+.progress-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.progress-phase {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.progress-phase span {
+  color: var(--sage);
+}
+
+.progress-fraction {
+  font-size: 0.78rem;
+  color: var(--warm-gray);
+  font-weight: 400;
+}
+
+.progress-bar-bg {
+  height: 8px;
+  background: var(--cream);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage-light), var(--sage));
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-step-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s;
+}
+
+.progress-dot.completed { background: var(--sage); }
+.progress-dot.current {
+  background: var(--white);
+  border: 2.5px solid var(--sage);
+  box-shadow: 0 0 0 3px var(--sage-light);
+}
+
+.progress-step-label {
+  font-size: 0.6rem;
+  color: var(--warm-gray);
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 80px;
+}
+
+/* Dashboard Grid */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.dash-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.75rem 2rem;
+}
+
+.dash-card-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.75rem;
+}
+
+.dash-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.25rem;
+}
+
+.dash-card .dash-date {
+  font-size: 0.82rem;
+  color: var(--warm-gray);
+  font-weight: 300;
+}
+
+.dash-card .dash-note {
+  font-size: 0.78rem;
+  color: var(--taupe);
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+/* Activity Feed */
+.activity-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem 2.25rem;
+}
+
+.activity-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+}
+
+.activity-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cream);
+  align-items: flex-start;
+}
+
+.activity-item:last-child { border-bottom: none; }
+
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+.activity-text {
+  font-size: 0.85rem;
+  color: var(--charcoal-light);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.activity-text strong {
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.activity-time {
+  font-size: 0.72rem;
+  color: var(--taupe);
+  margin-top: 0.2rem;
+}
+
+/* ═══════════════ PAGE: FINISH SCHEDULE ═══════════════ */
+.schedule-table {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-collapse: collapse;
+}
+
+.schedule-table thead th {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  background: var(--white);
+}
+
+.schedule-table tbody tr {
+  transition: background 0.2s;
+}
+
+.schedule-table tbody tr:hover {
+  background: var(--warm-white);
+}
+
+.schedule-table td {
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--charcoal-light);
+  font-weight: 300;
+  border-bottom: 1px solid var(--cream);
+  vertical-align: middle;
+}
+
+.schedule-table td:first-child {
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.schedule-table td:nth-child(3) {
+  font-weight: 400;
+  color: var(--charcoal);
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.status-finalized { background: var(--green-bg); color: var(--green); }
+.status-pending { background: var(--yellow-bg); color: var(--yellow); }
+.status-review { background: var(--blue-bg); color: var(--blue); }
+.status-not-started { background: var(--gray-badge-bg); color: var(--gray-badge); }
+
+.schedule-notes {
+  font-size: 0.78rem;
+  color: var(--warm-gray);
+  font-style: italic;
+}
+
+/* ═══════════════ PAGE: PHOTOS ═══════════════ */
+.photos-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.photo-categories {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.photo-cat-btn {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.15rem;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--charcoal-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.photo-cat-btn:hover, .photo-cat-btn.active {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--white);
+}
+
+.btn-upload {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--sage);
+  background: var(--white);
+  color: var(--sage-dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-upload:hover {
+  background: var(--sage);
+  color: var(--white);
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.photo-card {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.photo-card:nth-child(1) .photo-placeholder { background: linear-gradient(135deg, #c4b8aa, #C6B9B0); }
+.photo-card:nth-child(2) .photo-placeholder { background: linear-gradient(135deg, #b0a696, #C6B9B0); }
+.photo-card:nth-child(3) .photo-placeholder { background: linear-gradient(135deg, #B8A99A, #b5a898); }
+.photo-card:nth-child(4) .photo-placeholder { background: linear-gradient(135deg, #bdb1a3, #D1C7C1); }
+.photo-card:nth-child(5) .photo-placeholder { background: linear-gradient(135deg, #D1C7C1, #c0b3a5); }
+.photo-card:nth-child(6) .photo-placeholder { background: linear-gradient(135deg, #c7bdb0, #B8A99A); }
+.photo-card:nth-child(7) .photo-placeholder { background: linear-gradient(145deg, #baa997, #C6B9B0); }
+.photo-card:nth-child(8) .photo-placeholder { background: linear-gradient(120deg, #D1C7C1, #c2b7ab); }
+
+.pinterest-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+
+.pinterest-section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.pinterest-section p {
+  font-size: 0.82rem;
+  color: var(--warm-gray);
+  font-weight: 300;
+}
+
+.pinterest-placeholder {
+  margin-top: 1.5rem;
+  padding: 3rem;
+  border: 2px dashed var(--border);
+  color: var(--taupe);
+  font-size: 0.82rem;
+}
+
+/* ═══════════════ PAGE: TEAM ═══════════════ */
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.team-member-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.team-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sage-light), var(--taupe-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--white);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.team-member-info h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.15rem;
+}
+
+.team-member-role {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+}
+
+.team-member-email {
+  font-size: 0.82rem;
+  color: var(--charcoal-light);
+  text-decoration: none;
+  font-weight: 300;
+}
+.team-member-email:hover { color: var(--sage-dark); }
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 968px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .photos-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-list { grid-template-columns: 1fr; }
+  .progress-steps { display: none; }
+  .topbar { padding: 0 1.25rem; }
+  .main-content { padding: 2rem 1.5rem; }
+  .topbar-project { display: none; }
+  .topbar-divider { display: none; }
+  .photos-toolbar { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .photos-grid { grid-template-columns: repeat(2, 1fr); }
+  .schedule-table { font-size: 0.78rem; }
+  .schedule-table th, .schedule-table td { padding: 0.75rem 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-bg-pattern"></div>
+  <div class="login-card">
+    <div class="logo">Element321</div>
+    <div class="logo-sub">Client Portal</div>
+    <h2>Welcome</h2>
+    <p class="login-desc">Access your project dashboard, finish schedule, and design updates.</p>
+    <p class="login-hint">Enter your project PIN (the street number of your address)</p>
+    <input type="text" id="pinInput" placeholder="e.g. 1847" maxlength="6" autocomplete="off">
+    <button class="btn-login" onclick="doLogin()">Enter Portal</button>
+    <p class="login-help">Don't have a PIN? <a href="mailto:hello@element321design.com">Contact your designer</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════ PORTAL ═══════════════ -->
+<div class="portal" id="portal">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">Element321</div>
+      <div class="topbar-divider"></div>
+      <div class="topbar-project">1847 Rock Nettle Drive, Georgetown TX</div>
+    </div>
+    <div class="topbar-right">
+      <span class="role-badge">Client</span>
+      <span class="topbar-user">Sarah Mitchell</span>
+      <button class="btn-logout" onclick="doLogout()">Log Out</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-section-label">Project</div>
+    <ul class="sidebar-nav">
+      <li><a class="active" data-page="dashboard" onclick="showPage('dashboard', this)"><span class="nav-icon">&#9634;</span> Dashboard</a></li>
+      <li><a data-page="schedule" onclick="showPage('schedule', this)"><span class="nav-icon">&#9776;</span> Finish Schedule</a></li>
+      <li><a data-page="photos" onclick="showPage('photos', this)"><span class="nav-icon">&#9871;</span> Photos &amp; Inspiration</a></li>
+      <li><a data-page="documents" onclick="showPage('documents', this)"><span class="nav-icon">&#128196;</span> Documents</a></li>
+      <li><a data-page="timeline" onclick="showPage('timeline', this)"><span class="nav-icon">&#128337;</span> Timeline</a></li>
+      <li><a data-page="messages" onclick="showPage('messages', this)"><span class="nav-icon">&#128172;</span> Messages</a></li>
+    </ul>
+    <div class="sidebar-section-label">People</div>
+    <ul class="sidebar-nav">
+      <li><a data-page="team" onclick="showPage('team', this)"><span class="nav-icon">&#128101;</span> Team</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="project-header">
+        <h1>Rock Nettle Residence</h1>
+        <div class="project-address">1847 Rock Nettle Drive, Georgetown TX 78628</div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-card">
+        <div class="progress-top">
+          <div class="progress-phase">Phase 4 of 7: <span>Selections &amp; Sourcing</span></div>
+          <div class="progress-fraction">57% Complete</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width: 57%;"></div>
+        </div>
+        <div class="progress-steps">
+          <div class="progress-step-dot">
+            <div class="progress-dot completed"></div>
+            <div class="progress-step-label">Discovery</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot completed"></div>
+            <div class="progress-step-label">Concept</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot completed"></div>
+            <div class="progress-step-label">Design</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot current"></div>
+            <div class="progress-step-label">Selections</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot"></div>
+            <div class="progress-step-label">Presentation</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot"></div>
+            <div class="progress-step-label">Installation</div>
+          </div>
+          <div class="progress-step-dot">
+            <div class="progress-dot"></div>
+            <div class="progress-step-label">Reveal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-label">Next Milestone</div>
+          <h3>Design Presentation</h3>
+          <div class="dash-date">April 28, 2026</div>
+          <div class="dash-note">2 weeks from today</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-label">Action Items</div>
+          <h3>2 Items Need Your Attention</h3>
+          <div class="dash-date">Backsplash approval &bull; Vanity measurement</div>
+          <div class="dash-note">Review in Finish Schedule</div>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="activity-card">
+        <h3>Recent Activity</h3>
+        <div class="activity-item">
+          <div class="activity-dot"></div>
+          <div>
+            <div class="activity-text"><strong>Heather</strong> uploaded 12 new kitchen tile options</div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot" style="background: var(--taupe);"></div>
+          <div>
+            <div class="activity-text"><strong>Builder</strong> confirmed cabinet delivery for April 22</div>
+            <div class="activity-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot"></div>
+          <div>
+            <div class="activity-text"><strong>Rachel</strong> added Pinterest board: Primary Bathroom Inspiration</div>
+            <div class="activity-time">2 days ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot" style="background: var(--blue);"></div>
+          <div>
+            <div class="activity-text"><strong>Finish schedule updated:</strong> Countertop selection finalized</div>
+            <div class="activity-time">3 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINISH SCHEDULE -->
+    <div class="page" id="page-schedule">
+      <div class="project-header">
+        <h1>Finish Schedule</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; All rooms &amp; selections</div>
+      </div>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Item</th>
+            <th>Selection</th>
+            <th>Status</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kitchen</td>
+            <td>Countertops</td>
+            <td>Calacatta Gold Marble</td>
+            <td><span class="status-badge status-finalized">Finalized</span></td>
+            <td class="schedule-notes">Ordered 4/8</td>
+          </tr>
+          <tr>
+            <td>Kitchen</td>
+            <td>Backsplash</td>
+            <td>Zellige Tile - Weathered White</td>
+            <td><span class="status-badge status-pending">Pending Approval</span></td>
+            <td class="schedule-notes">3 options attached</td>
+          </tr>
+          <tr>
+            <td>Kitchen</td>
+            <td>Cabinet Hardware</td>
+            <td>Unlacquered Brass Pulls</td>
+            <td><span class="status-badge status-finalized">Finalized</span></td>
+            <td class="schedule-notes"></td>
+          </tr>
+          <tr>
+            <td>Primary Bath</td>
+            <td>Floor Tile</td>
+            <td>Nero Marquina Marble</td>
+            <td><span class="status-badge status-review">In Review</span></td>
+            <td class="schedule-notes"></td>
+          </tr>
+          <tr>
+            <td>Primary Bath</td>
+            <td>Vanity</td>
+            <td>Custom White Oak</td>
+            <td><span class="status-badge status-pending">Pending Measurement</span></td>
+            <td class="schedule-notes">Awaiting builder measurement</td>
+          </tr>
+          <tr>
+            <td>Living Room</td>
+            <td>Sofa</td>
+            <td>Restoration Hardware Cloud</td>
+            <td><span class="status-badge status-finalized">Finalized</span></td>
+            <td class="schedule-notes">12-week lead time</td>
+          </tr>
+          <tr>
+            <td>Living Room</td>
+            <td>Coffee Table</td>
+            <td>&mdash;</td>
+            <td><span class="status-badge status-not-started">Not Started</span></td>
+            <td class="schedule-notes"></td>
+          </tr>
+          <tr>
+            <td>Primary Bedroom</td>
+            <td>Wallpaper</td>
+            <td>&mdash;</td>
+            <td><span class="status-badge status-not-started">Not Started</span></td>
+            <td class="schedule-notes"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHOTOS & INSPIRATION -->
+    <div class="page" id="page-photos">
+      <div class="project-header">
+        <h1>Photos &amp; Inspiration</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; Curated images and boards</div>
+      </div>
+
+      <div class="photos-toolbar">
+        <div class="photo-categories">
+          <button class="photo-cat-btn active">All</button>
+          <button class="photo-cat-btn">Inspiration</button>
+          <button class="photo-cat-btn">Site Photos</button>
+          <button class="photo-cat-btn">Selections</button>
+          <button class="photo-cat-btn">Final Install</button>
+        </div>
+        <button class="btn-upload">+ Upload Photos</button>
+      </div>
+
+      <div class="photos-grid">
+        <div class="photo-card"><div class="photo-placeholder">Kitchen Inspiration</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Primary Bath</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Tile Samples</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Living Room Mood</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Site Progress</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Hardware Options</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Marble Slabs</div></div>
+        <div class="photo-card"><div class="photo-placeholder">Color Palette</div></div>
+      </div>
+
+      <div class="pinterest-section">
+        <h3>Pinterest Boards</h3>
+        <p>Shared inspiration boards for your project</p>
+        <div class="pinterest-placeholder">
+          &#128204; Primary Bathroom Inspiration &bull; Kitchen Design &bull; Living Room Concepts<br>
+          <span style="font-size: 0.75rem; color: var(--taupe);">Boards added by Rachel &mdash; Click to view on Pinterest</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="page" id="page-documents">
+      <div class="project-header">
+        <h1>Documents</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; Contracts, proposals, and files</div>
+      </div>
+      <div class="dash-card" style="text-align: center; padding: 4rem 2rem;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">&#128196;</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Documents Coming Soon</h3>
+        <p style="font-size: 0.85rem; color: var(--warm-gray); font-weight: 300;">Your contracts, proposals, and project files will appear here.</p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="page" id="page-timeline">
+      <div class="project-header">
+        <h1>Project Timeline</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; Key dates and milestones</div>
+      </div>
+      <div class="dash-card" style="text-align: center; padding: 4rem 2rem;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">&#128337;</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Timeline Coming Soon</h3>
+        <p style="font-size: 0.85rem; color: var(--warm-gray); font-weight: 300;">Your full project timeline with milestones will appear here.</p>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="page" id="page-messages">
+      <div class="project-header">
+        <h1>Messages</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; Team communication</div>
+      </div>
+      <div class="dash-card" style="text-align: center; padding: 4rem 2rem;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">&#128172;</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Messages Coming Soon</h3>
+        <p style="font-size: 0.85rem; color: var(--warm-gray); font-weight: 300;">Communicate with your design team directly from the portal.</p>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="page" id="page-team">
+      <div class="project-header">
+        <h1>Your Team</h1>
+        <div class="project-address">Rock Nettle Residence &mdash; Everyone involved in your project</div>
+      </div>
+
+      <div class="team-list">
+        <div class="team-member-card">
+          <div class="team-avatar">HS</div>
+          <div class="team-member-info">
+            <h4>Heather Smith</h4>
+            <div class="team-member-role">Lead Designer</div>
+            <a href="mailto:heather@element321.com" class="team-member-email">heather@element321.com</a>
+          </div>
+        </div>
+        <div class="team-member-card">
+          <div class="team-avatar">RM</div>
+          <div class="team-member-info">
+            <h4>Rachel Mazur</h4>
+            <div class="team-member-role">Designer</div>
+            <a href="mailto:rachel@element321.com" class="team-member-email">rachel@element321.com</a>
+          </div>
+        </div>
+        <div class="team-member-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, var(--taupe-light), var(--taupe));">TA</div>
+          <div class="team-member-info">
+            <h4>Tom Anderson</h4>
+            <div class="team-member-role">Builder &bull; Anderson Custom Homes</div>
+            <a href="mailto:tom@andersoncustom.com" class="team-member-email">tom@andersoncustom.com</a>
+          </div>
+        </div>
+        <div class="team-member-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, #d4c5b5, #c4b8aa);">SM</div>
+          <div class="team-member-info">
+            <h4>Sarah &amp; David Mitchell</h4>
+            <div class="team-member-role">Client</div>
+            <a href="mailto:sarah.mitchell@email.com" class="team-member-email">sarah.mitchell@email.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Login
+function doLogin() {
+  const pin = document.getElementById('pinInput').value.trim();
+  if (!pin) return;
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('portal').classList.add('active');
+}
+
+function doLogout() {
+  document.getElementById('portal').classList.remove('active');
+  document.getElementById('loginScreen').classList.remove('hidden');
+  document.getElementById('pinInput').value = '';
+}
+
+// Enter key
+document.getElementById('pinInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') doLogin();
+});
+
+// Page navigation
+function showPage(pageId, el) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show target
+  document.getElementById('page-' + pageId).classList.add('active');
+  // Update nav
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+// Photo category buttons
+document.querySelectorAll('.photo-cat-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.photo-cat-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Auto-focus pin input
+document.getElementById('pinInput').focus();
+</script>
+
+</body>
+</html>
