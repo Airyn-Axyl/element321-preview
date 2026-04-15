@@ -689,15 +689,80 @@
 
 <!-- ============ SECTION 1: HERO ============ -->
 <section class="hero">
-  <div class="hero-inner section-inner">
-    <div class="hero-content">
-      <h1>FIND OUT WHAT YOUR AIRBNB <span class="highlight">SHOULD ACTUALLY BE MAKING</span></h1>
-      <p class="subheadline">Most short-term rental owners leave 20-40% of their potential revenue on the table. Get a free, data-driven analysis of your property's real earning potential.</p>
-      <p class="supporting-text">Free revenue analysis. No commitment. Takes 2 minutes.</p>
-      <a href="#get-started" onclick="document.getElementById('get-started').scrollIntoView({behavior:'smooth'});return false;" class="btn-primary" style="display:inline-block;margin-top:24px;">GET MY FREE ANALYSIS →</a>
+  <div class="section-inner" style="text-align:center;max-width:680px;margin:0 auto;padding:80px 24px;">
+    <p style="font-size:0.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#f1b434;margin-bottom:12px;">FREE REVENUE ANALYSIS</p>
+    <h1 style="font-family:'Garage Gothic',Arial,sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:#f1e6b2;text-transform:uppercase;letter-spacing:2px;line-height:1.1;margin-bottom:20px;">WHAT SHOULD YOUR<br><span style="color:#f1b434;">AIRBNB BE MAKING?</span></h1>
+    <p style="color:rgba(241,230,178,0.75);font-size:1.05rem;margin-bottom:40px;">Enter your property address and we'll show you exactly what your Airbnb should be earning based on your market.</p>
+
+    <!-- STEP 1: Address -->
+    <div id="step-1" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 8px 40px rgba(0,0,0,0.2);text-align:left;">
+      <h3 style="font-family:'Garage Gothic',Arial,sans-serif;font-size:1.2rem;color:#003d4c;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Enter Your Property Address</h3>
+      <p style="color:#808080;font-size:0.85rem;margin-bottom:20px;">We use this to pull comparable properties in your market.</p>
+      <input type="text" id="prop-address" placeholder="123 Main St, Austin, TX 78701" style="width:100%;padding:14px 16px;border:2px solid #D1C7C1;border-radius:8px;font-size:1rem;font-family:inherit;box-sizing:border-box;outline:none;margin-bottom:16px;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+      <button onclick="goToStep2()" style="width:100%;background:#c16c18;color:#fff;border:none;padding:15px;font-size:0.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:inherit;">GET MY FREE REPORT →</button>
+    </div>
+
+    <!-- STEP 2: Contact Info (hidden initially) -->
+    <div id="step-2" style="display:none;background:#fff;border-radius:12px;padding:32px;box-shadow:0 8px 40px rgba(0,0,0,0.2);text-align:left;">
+      <p style="color:#003d4c;font-size:0.85rem;font-weight:600;margin-bottom:4px;">📍 <span id="address-display"></span></p>
+      <h3 style="font-family:'Garage Gothic',Arial,sans-serif;font-size:1.2rem;color:#003d4c;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Where Should We Send Your Report?</h3>
+      <p style="color:#808080;font-size:0.85rem;margin-bottom:20px;">We'll text and email your free revenue analysis within 24 hours.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <input type="text" id="s2-first" placeholder="First Name *" required style="padding:12px 14px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+        <input type="text" id="s2-last" placeholder="Last Name" style="padding:12px 14px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+      </div>
+      <input type="tel" id="s2-phone" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box;outline:none;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+      <input type="email" id="s2-email" placeholder="Email Address *" required style="width:100%;padding:12px 14px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:20px;box-sizing:border-box;outline:none;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+      <button onclick="submitReport()" id="s2-btn" style="width:100%;background:#c16c18;color:#fff;border:none;padding:15px;font-size:0.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:inherit;">SEND MY FREE REPORT →</button>
+      <p style="text-align:center;font-size:0.75rem;color:#aaa;margin-top:12px;">No pitch. No obligation. Just data.</p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="step-success" style="display:none;background:#fff;border-radius:12px;padding:40px;box-shadow:0 8px 40px rgba(0,0,0,0.2);text-align:center;">
+      <p style="font-size:2rem;margin-bottom:12px;">✅</p>
+      <h3 style="font-family:'Garage Gothic',Arial,sans-serif;font-size:1.4rem;color:#003d4c;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">You're All Set!</h3>
+      <p style="color:#555;">Check your phone — Airyn will text you with your market analysis shortly.</p>
     </div>
   </div>
 </section>
+
+<script>
+function goToStep2() {
+  const addr = document.getElementById('prop-address').value.trim();
+  if (!addr) { document.getElementById('prop-address').focus(); return; }
+  document.getElementById('address-display').textContent = addr;
+  document.getElementById('step-1').style.display = 'none';
+  document.getElementById('step-2').style.display = 'block';
+}
+
+async function submitReport() {
+  const btn = document.getElementById('s2-btn');
+  const first = document.getElementById('s2-first').value.trim();
+  const phone = document.getElementById('s2-phone').value.trim();
+  const email = document.getElementById('s2-email').value.trim();
+  const address = document.getElementById('address-display').textContent;
+  if (!first || !phone || !email) { alert('Please fill in all required fields.'); return; }
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method: 'POST',
+      headers: {'Authorization':'Bearer pit-0fe1a2a5-5f86-4ad1-b578-a1ebefd81e9b','Version':'2021-07-28','Content-Type':'application/json'},
+      body: JSON.stringify({
+        locationId: '5E7Q4JM8y2G2mDfsEIrI',
+        firstName: first,
+        lastName: document.getElementById('s2-last').value.trim(),
+        phone: phone,
+        email: email,
+        address1: address,
+        source: 'STR Passifier Landing Page',
+        tags: ['new-lead','source-strpassifier']
+      })
+    });
+  } catch(e) {}
+  document.getElementById('step-2').style.display = 'none';
+  document.getElementById('step-success').style.display = 'block';
+}
+</script>
 <footer class="footer">
   <p>&copy; 2026 Airinn Real Estate. All rights reserved. | <a href="https://airinn.realestate">airinn.realestate</a></p>
 </footer>
