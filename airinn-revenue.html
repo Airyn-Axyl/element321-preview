@@ -685,47 +685,78 @@
 <body>
 
 <!-- ============ SECTION 1: HERO ============ -->
-<section class="hero">
-  <div class="section-inner">
-    <div class="hero-content">
-      <h1>Find Out What Your Airbnb <span class="highlight">Should Actually Be Making</span></h1>
-      <p class="subheadline">Most short-term rental owners leave 20-40% of their potential revenue on the table. Get a free, data-driven analysis of your property's real earning potential.</p>
-      <p class="supporting-text">Free revenue analysis. No commitment. Takes 2 minutes.</p>
+<section class="hero" style="background:linear-gradient(135deg,#002e3a 0%,#003d4c 60%,#004d5e 100%);min-height:90vh;display:flex;align-items:center;padding:60px 24px;">
+  <div style="max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <!-- LEFT: Headline + copy -->
+    <div>
+      <p style="font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#f1b434;margin-bottom:16px;">FREE REVENUE ANALYSIS</p>
+      <h1 style="font-family:'Garage Gothic',Impact,Arial,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:#f1e6b2;text-transform:uppercase;letter-spacing:2px;line-height:1.05;margin-bottom:24px;">Find Out What Your Airbnb<br><span style="color:#f1b434;">Should Actually Be Making</span></h1>
+      <p style="color:rgba(241,230,178,0.75);font-size:1.1rem;line-height:1.7;margin-bottom:0;">Most short-term rental owners leave 20-40% of their potential revenue on the table. Get a free, data-driven analysis based on your actual market.</p>
     </div>
-    <div class="hero-form-card">
-      <h3>Get Your Free Revenue Report</h3>
-      <p class="form-subtitle">See what your property should be earning based on real market data.</p>
+    <!-- RIGHT: Two-step form -->
+    <div style="background:#fff;border-radius:16px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <!-- Step 1 -->
       <div id="step-1">
-      <h3>Enter Your Property Address</h3>
-      <p class="form-subtitle">We use this to pull comparable properties in your market.</p>
-      <input type="text" id="prop-address" placeholder="123 Main St, Austin, TX 78701" style="width:100%;padding:14px 16px;border:2px solid #D1C7C1;border-radius:8px;font-size:1rem;font-family:inherit;box-sizing:border-box;outline:none;margin-bottom:16px;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
-      <button onclick="goToStep2()" class="btn-primary full-width">GET MY FREE REPORT →</button>
-    </div>
-    <div id="step-2" style="display:none;">
-      <p style="font-size:0.82rem;color:#003d4c;font-weight:600;margin-bottom:12px;">📍 <span id="address-display"></span></p>
-      <h3>Where Should We Send Your Report?</h3>
-      <p class="form-subtitle">We'll text and email your free analysis within 24 hours.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-        <input type="text" id="s2-first" placeholder="First Name *" style="padding:11px 13px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
-        <input type="text" id="s2-last" placeholder="Last Name" style="padding:11px 13px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
+        <h3 style="font-family:'Garage Gothic',Impact,Arial,sans-serif;font-size:1.3rem;color:#003d4c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Get Your Free Revenue Report</h3>
+        <p style="color:#808080;font-size:0.85rem;margin-bottom:20px;">See what your property should be earning based on real market data.</p>
+        <input type="text" id="prop-address" placeholder="Property address (or city, state) *" style="width:100%;padding:14px 16px;border:2px solid #e8e0c4;border-radius:8px;font-size:0.95rem;font-family:inherit;box-sizing:border-box;outline:none;margin-bottom:14px;transition:border-color 0.2s;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#e8e0c4'">
+        <button onclick="goToStep2()" style="width:100%;background:#c16c18;color:#fff;border:none;padding:15px;font-size:0.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:inherit;transition:background 0.2s;" onmouseover="this.style.background='#d4791f'" onmouseout="this.style.background='#c16c18'">GET MY FREE REPORT →</button>
+        <p style="text-align:center;font-size:0.72rem;color:#aaa;margin-top:12px;">Free. No commitment. No pitch.</p>
       </div>
-      <input type="tel" id="s2-phone" placeholder="Phone Number *" style="width:100%;padding:11px 13px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:10px;box-sizing:border-box;outline:none;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
-      <input type="email" id="s2-email" placeholder="Email Address *" style="width:100%;padding:11px 13px;border:2px solid #D1C7C1;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:16px;box-sizing:border-box;outline:none;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#D1C7C1'">
-      <button onclick="submitReport()" id="s2-btn" class="btn-primary full-width">SEND MY FREE REPORT →</button>
-      <p style="text-align:center;font-size:0.72rem;color:#aaa;margin-top:10px;">No pitch. No obligation. Just data.</p>
-    </div>
-    <div id="step-success" style="display:none;text-align:center;padding:20px;">
-      <p style="font-size:1.5rem;margin-bottom:8px;">✅</p>
-      <h3 style="color:#003d4c;">You're all set!</h3>
-      <p style="color:#666;font-size:0.9rem;margin-top:8px;">Check your phone — Airyn will text you shortly with your market analysis.</p>
-    </div>
-    <script>
-    function goToStep2(){const a=document.getElementById('prop-address').value.trim();if(!a){document.getElementById('prop-address').focus();return;}document.getElementById('address-display').textContent=a;document.getElementById('step-1').style.display='none';document.getElementById('step-2').style.display='block';}
-    async function submitReport(){const btn=document.getElementById('s2-btn');const f=document.getElementById('s2-first').value.trim();const p=document.getElementById('s2-phone').value.trim();const e=document.getElementById('s2-email').value.trim();const a=document.getElementById('address-display').textContent;if(!f||!p||!e){alert('Please fill in all required fields.');return;}btn.textContent='Sending...';btn.disabled=true;try{await fetch('https://services.leadconnectorhq.com/contacts/',{method:'POST',headers:{'Authorization':'Bearer pit-0fe1a2a5-5f86-4ad1-b578-a1ebefd81e9b','Version':'2021-07-28','Content-Type':'application/json'},body:JSON.stringify({locationId:'5E7Q4JM8y2G2mDfsEIrI',firstName:f,lastName:document.getElementById('s2-last').value.trim(),phone:p,email:e,address1:a,source:'STR Passifier Landing Page',tags:['new-lead','source-strpassifier']})});}catch(err){}document.getElementById('step-2').style.display='none';document.getElementById('step-success').style.display='block';}
-    </script>
+      <!-- Step 2 -->
+      <div id="step-2" style="display:none;">
+        <p style="font-size:0.8rem;color:#003d4c;font-weight:600;background:#f7f3e9;padding:8px 12px;border-radius:6px;margin-bottom:16px;">📍 <span id="address-display"></span></p>
+        <h3 style="font-family:'Garage Gothic',Impact,Arial,sans-serif;font-size:1.3rem;color:#003d4c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Where Should We Send It?</h3>
+        <p style="color:#808080;font-size:0.85rem;margin-bottom:16px;">We'll text you your analysis within 24 hours.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <input type="text" id="s2-first" placeholder="First Name *" style="padding:12px 14px;border:2px solid #e8e0c4;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#e8e0c4'">
+          <input type="text" id="s2-last" placeholder="Last Name" style="padding:12px 14px;border:2px solid #e8e0c4;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#e8e0c4'">
+        </div>
+        <input type="tel" id="s2-phone" placeholder="Phone Number *" style="width:100%;padding:12px 14px;border:2px solid #e8e0c4;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:10px;box-sizing:border-box;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#e8e0c4'">
+        <input type="email" id="s2-email" placeholder="Email Address *" style="width:100%;padding:12px 14px;border:2px solid #e8e0c4;border-radius:8px;font-size:0.9rem;font-family:inherit;margin-bottom:16px;box-sizing:border-box;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#c16c18'" onblur="this.style.borderColor='#e8e0c4'">
+        <button onclick="submitReport()" id="s2-btn" style="width:100%;background:#c16c18;color:#fff;border:none;padding:15px;font-size:0.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:inherit;" onmouseover="this.style.background='#d4791f'" onmouseout="this.style.background='#c16c18'">SEND MY FREE REPORT →</button>
+      </div>
+      <!-- Success -->
+      <div id="step-success" style="display:none;text-align:center;padding:20px 0;">
+        <p style="font-size:2.5rem;margin-bottom:12px;">✅</p>
+        <h3 style="font-family:'Garage Gothic',Impact,Arial,sans-serif;font-size:1.4rem;color:#003d4c;text-transform:uppercase;margin-bottom:8px;">You're All Set!</h3>
+        <p style="color:#666;font-size:0.9rem;">Check your phone — Airyn will text you with your market analysis shortly.</p>
+      </div>
     </div>
   </div>
+  <style>
+    @media (max-width: 768px) {
+      .hero > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+  </style>
 </section>
+<script>
+function goToStep2(){
+  const a=document.getElementById('prop-address').value.trim();
+  if(!a){document.getElementById('prop-address').focus();return;}
+  document.getElementById('address-display').textContent=a;
+  document.getElementById('step-1').style.display='none';
+  document.getElementById('step-2').style.display='block';
+}
+async function submitReport(){
+  const btn=document.getElementById('s2-btn');
+  const f=document.getElementById('s2-first').value.trim();
+  const p=document.getElementById('s2-phone').value.trim();
+  const e=document.getElementById('s2-email').value.trim();
+  const a=document.getElementById('address-display').textContent;
+  if(!f||!p||!e){alert('Please fill in all required fields.');return;}
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    await fetch('https://services.leadconnectorhq.com/contacts/',{
+      method:'POST',
+      headers:{'Authorization':'Bearer pit-0fe1a2a5-5f86-4ad1-b578-a1ebefd81e9b','Version':'2021-07-28','Content-Type':'application/json'},
+      body:JSON.stringify({locationId:'5E7Q4JM8y2G2mDfsEIrI',firstName:f,lastName:document.getElementById('s2-last').value.trim(),phone:p,email:e,address1:a,source:'STR Passifier Landing Page',tags:['new-lead','source-strpassifier']})
+    });
+  }catch(err){}
+  document.getElementById('step-2').style.display='none';
+  document.getElementById('step-success').style.display='block';
+}
+</script>
 
 <!-- ============ SECTION 2: THE PROBLEM ============ -->
 <section class="section problem-section">
