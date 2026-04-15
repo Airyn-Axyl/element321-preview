@@ -698,24 +698,64 @@
     <div class="hero-form-card">
       <h3>Get Your Free Revenue Report</h3>
       <p class="form-subtitle">See what your property should be earning based on real market data.</p>
-      <iframe
- src="https://airyn.airinn.host/widget/form/RgsLDAlcTD0RWgigc7xa"
- style="width:100%;height:100%;border:none;border-radius:3px"
- id="inline-RgsLDAlcTD0RWgigc7xa"
- data-layout='{"id":"INLINE"}'
- data-trigger-type="alwaysShow"
- data-trigger-value=""
- data-activation-type="alwaysActivated"
- data-activation-value=""
- data-deactivation-type="neverDeactivate"
- data-deactivation-value=""
- data-form-name="*What Should my Airbnb Be Making"
- data-height="600"
- data-layout-iframe-id="inline-RgsLDAlcTD0RWgigc7xa"
- data-form-id="RgsLDAlcTD0RWgigc7xa"
- title="*What Should my Airbnb Be Making"
-></iframe>
-<script src="https://airyn.airinn.host/js/form_embed.js"></script>
+      <form id="airinn-hero-form" onsubmit="submitAirinnForm(event)" style="background:#fff;padding:32px;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.15);">
+  <h3 style="font-family:'Garage Gothic',Arial,sans-serif;font-size:1.3rem;color:#003d4c;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;">Get Your Free Revenue Analysis</h3>
+  <p style="color:#808080;font-size:0.85rem;margin-bottom:20px;">No commitment. Takes 2 minutes.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+    <input type="text" id="f-first" placeholder="First Name *" required style="padding:12px 14px;border:1px solid #D1C7C1;border-radius:6px;font-size:0.9rem;font-family:inherit;outline:none;width:100%;box-sizing:border-box;">
+    <input type="text" id="f-last" placeholder="Last Name" style="padding:12px 14px;border:1px solid #D1C7C1;border-radius:6px;font-size:0.9rem;font-family:inherit;outline:none;width:100%;box-sizing:border-box;">
+  </div>
+  <input type="email" id="f-email" placeholder="Email Address *" required style="width:100%;padding:12px 14px;border:1px solid #D1C7C1;border-radius:6px;font-size:0.9rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box;outline:none;">
+  <input type="tel" id="f-phone" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border:1px solid #D1C7C1;border-radius:6px;font-size:0.9rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box;outline:none;">
+  <select id="f-situation" style="width:100%;padding:12px 14px;border:1px solid #D1C7C1;border-radius:6px;font-size:0.9rem;font-family:inherit;margin-bottom:20px;box-sizing:border-box;outline:none;color:#555;background:#fff;">
+    <option value="">Current Situation *</option>
+    <option value="With Evolve">Currently with Evolve</option>
+    <option value="Self-managing">Self-managing</option>
+    <option value="With another PM">With another property manager</option>
+    <option value="New to STR">New to short-term rentals</option>
+  </select>
+  <button type="submit" id="f-submit" style="width:100%;background:#c16c18;color:#fff;border:none;padding:14px;font-size:0.9rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:6px;cursor:pointer;font-family:inherit;">GET MY FREE ANALYSIS →</button>
+  <p style="text-align:center;font-size:0.75rem;color:#808080;margin-top:12px;">Free. No commitment. No pitch.</p>
+  <div id="f-success" style="display:none;text-align:center;padding:20px;color:#003d4c;">
+    <p style="font-size:1.1rem;font-weight:600;">✅ Got it! We'll be in touch within 24 hours.</p>
+    <p style="font-size:0.85rem;color:#808080;">Check your phone — Airyn will text you shortly.</p>
+  </div>
+</form>
+<script>
+async function submitAirinnForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('f-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const data = {
+    firstName: document.getElementById('f-first').value,
+    lastName: document.getElementById('f-last').value,
+    email: document.getElementById('f-email').value,
+    phone: document.getElementById('f-phone').value,
+    customFields: [{id: 'situation', value: document.getElementById('f-situation').value}],
+    source: 'STR Passifier Landing Page',
+    tags: ['new-lead', 'source-strpassifier']
+  };
+  try {
+    const resp = await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer pit-0fe1a2a5-5f86-4ad1-b578-a1ebefd81e9b',
+        'Version': '2021-07-28',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({...data, locationId: '5E7Q4JM8y2G2mDfsEIrI'})
+    });
+    document.getElementById('airinn-hero-form').querySelector('form, #airinn-hero-form > *:not(#f-success)');
+    document.getElementById('f-success').style.display = 'block';
+    document.getElementById('f-submit').closest('form').style.display = 'none';
+  } catch(err) {
+    btn.textContent = 'GET MY FREE ANALYSIS →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
     </div>
   </div>
 </section>
