@@ -185,6 +185,15 @@
     margin: 14px 0 28px;
   }
   .aa-page .aa-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .aa-page .aa-hero__insight {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--yellow);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+    opacity: 0.92;
+  }
+
   .aa-page .aa-hero__meta {
     display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap;
     color: rgba(255,255,255,0.65); font-size: 14px;
@@ -580,12 +589,14 @@
     <div class="aa-container">
       <div class="aa-hero__grid">
         <div>
-          <span class="aa-eyebrow">Airyn Assist</span>
           <h1 class="aa-h1">
-            Run your entire STR business <span class="aa-accent">from a text.</span>
+            Let Airyn run your entire STR business <span class="aa-accent">from a text.</span>
           </h1>
           <p class="aa-hero__lead">
-            Airyn is the operator in your pocket. Text her from any device, wherever you are, and she handles guests, pricing, vendors, and performance. Not a chatbot with reports. An assistant that actually does the work.
+            No apps to download. No chatbot. Run your business from your phone or your watch. Airyn is the operator in your pocket.
+          </p>
+          <p class="aa-hero__insight">
+            It is one thing to get insights. It is another to have Airyn execute them for you.
           </p>
           <div class="aa-hero__ctas">
             <a href="#start" class="aa-btn aa-btn--primary">Start free trial</a>
@@ -633,7 +644,7 @@
     <div class="aa-container">
       <div class="aa-section-head">
         <span class="aa-eyebrow">The problem</span>
-        <h2 class="aa-h2">Running an STR shouldn't require 11 browser tabs.</h2>
+        <h2 class="aa-h2" style="font-size: clamp(32px, 5vw, 52px);">Running an STR shouldn't require 11 browser tabs.</h2>
         <p class="aa-lead">Most tools tell you what to do. Then you go log into five dashboards and do it. Airyn flips that.</p>
       </div>
       <div class="aa-cards">
@@ -669,7 +680,7 @@
         <div class="aa-cap">
           <span class="aa-cap__tag">Guest communication</span>
           <h3>Drafts, sends, and follows up for you</h3>
-          <p>Reads the full guest thread, drafts in your voice, and can send directly — or wait for your one-text approval.</p>
+          <p>Reads the full guest thread, drafts in your voice, and can send directly or wait for your one-text approval.</p>
           <ul>
             <li>Instant AI replies across Airbnb, Vrbo, and direct</li>
             <li>Ghost-send: approve by text, Airyn sends</li>
@@ -681,7 +692,7 @@
         <div class="aa-cap">
           <span class="aa-cap__tag">Revenue &amp; pricing</span>
           <h3>Protects your ADR while you sleep</h3>
-          <p>Airyn watches your calendar, the market, and your pricing tool. When something shifts, she tells you — and fixes it.</p>
+          <p>Airyn watches your calendar, the market, and your pricing tool. When something shifts, she tells you and fixes it.</p>
           <ul>
             <li>Gap night detection with smart rate suggestions</li>
             <li>Rate pushes to PriceLabs / Wheelhouse / Beyond</li>
@@ -705,7 +716,7 @@
         <div class="aa-cap">
           <span class="aa-cap__tag">Property performance</span>
           <h3>Know what's working. Fix what isn't.</h3>
-          <p>Ask for a read on any property and Airyn delivers a clear, operator-grade answer — then offers to act on it.</p>
+          <p>Ask for a read on any property and Airyn delivers a clear, operator-grade answer, then offers to act on it.</p>
           <ul>
             <li>Occupancy, ADR, RevPAR at a glance</li>
             <li>Listing audit from just your URL</li>
@@ -748,7 +759,7 @@
       <div class="aa-pms__grid">
         <div>
           <span class="aa-eyebrow">Your stack, your way</span>
-          <h2 class="aa-h2" style="color:#fff;">Integrate with your PMS — or just connect with ours.</h2>
+          <h2 class="aa-h2" style="color:#fff;">Integrate with your PMS or just connect with ours.</h2>
           <p class="aa-lead">Already running on Guesty, Hospitable, or something else? Airyn plugs in. Don't have a PMS? Connect to AirINN's managed infrastructure and skip the setup entirely.</p>
           <div class="aa-pms__chips">
             <span class="aa-chip">Guesty</span>
@@ -767,11 +778,11 @@
           </div>
           <div class="aa-pms__option">
             <h4>Use ours <span class="aa-tag">Recommended</span></h4>
-            <p>No PMS yet? Plug into AirINN's managed infrastructure — the same system powering STRP+ and AirINN Guided Control. Already an AirINN owner? You're already set up.</p>
+            <p>No PMS yet? Plug into AirINN's managed infrastructure, the same system powering STRP+ and AirINN Guided Control. Already an AirINN owner? You're already set up.</p>
           </div>
           <div class="aa-pms__option">
             <h4>Zero long onboarding</h4>
-            <p>No 5-step wizards. No "connect your accounts" checklists. Tell us the basics. We do the rest.</p>
+            <p>No 5-step wizards. No connect-your-accounts checklists. Tell us the basics. We do the rest.</p>
           </div>
         </div>
       </div>
@@ -788,18 +799,18 @@
       <div class="aa-steps">
         <div class="aa-step">
           <div class="aa-step__num">1</div>
-          <h3>Tell us your setup</h3>
-          <p>Your properties, your PMS (or use ours), your vendors. A short intake — we take it from there.</p>
+          <h3>Have a conversation with Airyn</h3>
+          <p>She learns your properties, how you like to operate, your vendors, and your tools. One short conversation and she knows your business.</p>
         </div>
         <div class="aa-step">
           <div class="aa-step__num">2</div>
-          <h3>We wire it up for you</h3>
-          <p>No dashboards to configure. We connect your tools, load your property memory, and test it end to end.</p>
+          <h3>She builds it for you</h3>
+          <p>Airyn connects to your tools or the ones she already has built. No dashboards to configure. No wizards. We handle the setup end to end.</p>
         </div>
         <div class="aa-step">
           <div class="aa-step__num">3</div>
-          <h3>Save Airyn's number</h3>
-          <p>Text her like you'd text a team member. She answers, acts, and keeps the operation running — from anywhere.</p>
+          <h3>Save her number and text like a teammate</h3>
+          <p>Text Airyn like you would a business partner. She answers, acts, and keeps the operation running from anywhere you are.</p>
         </div>
       </div>
     </div>
