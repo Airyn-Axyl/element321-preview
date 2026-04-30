@@ -358,18 +358,17 @@ async function getEstimate() {
   btn.innerHTML = '<span class="spinner"></span>Calculating...';
 
   try {
-    const params = new URLSearchParams({
-      address: address,
-      currency: currency,
-      'Bedroom category': bedrooms,
-      version: 2,
-      Monthly: true
-    });
+    // Route through Mac mini proxy to avoid CORS (PriceLabs blocks direct browser calls)
+    const PROXY_URL = 'https://landons-mac-mini.tailf2ec9a.ts.net/pricelabs/pricelabs-estimate';
 
-    const response = await fetch(`https://api.pricelabs.co/v1/revenue/estimator?${params}`, {
-      headers: {
-        'X-API-Key': PRICELABS_API_KEY
-      }
+    const response = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        address: address,
+        bedrooms: bedrooms,
+        currency: currency
+      })
     });
 
     if (!response.ok) {
