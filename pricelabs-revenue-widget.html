@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AirINN Revenue Estimator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .widget {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    max-width: 520px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .widget-header {
+    background: #003d4c;
+    padding: 28px 32px 24px;
+    color: #fff;
+  }
+
+  .widget-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+
+  .widget-header p {
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .widget-body {
+    padding: 28px 32px 32px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
+  }
+
+  label .req {
+    color: #c16c18;
+    margin-left: 2px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #111827;
+    background: #fff;
+    transition: border-color 0.15s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus {
+    border-color: #003d4c;
+    box-shadow: 0 0 0 3px rgba(0,61,76,0.08);
+  }
+
+  .row {
+    display: flex;
+    gap: 14px;
+  }
+
+  .row .form-group {
+    flex: 1;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background: #c16c18;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.2px;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 6px;
+  }
+
+  .btn:hover { background: #a85c14; }
+  .btn:active { transform: scale(0.99); }
+  .btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+  /* Results */
+  .results {
+    display: none;
+    margin-top: 24px;
+    border-top: 1.5px solid #f1f5f9;
+    padding-top: 22px;
+  }
+
+  .results.visible { display: block; }
+
+  .results-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 14px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .metric-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1.5px solid #e5e7eb;
+  }
+
+  .metric-card.highlight {
+    background: #003d4c;
+    border-color: #003d4c;
+    color: #fff;
+    grid-column: span 2;
+  }
+
+  .metric-card .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+
+  .metric-card.highlight .metric-label { color: rgba(255,255,255,0.65); }
+
+  .metric-card .metric-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+  }
+
+  .metric-card.highlight .metric-value { color: #f1b434; font-size: 32px; }
+
+  .metric-card .metric-sub {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 3px;
+  }
+
+  .metric-card.highlight .metric-sub { color: rgba(255,255,255,0.5); }
+
+  .results-note {
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .cta-strip {
+    background: #f1e6b2;
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    gap: 12px;
+  }
+
+  .cta-strip p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #003d4c;
+    line-height: 1.4;
+  }
+
+  .cta-strip a {
+    background: #003d4c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 16px;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Error */
+  .error-msg {
+    display: none;
+    background: #fef2f2;
+    border: 1.5px solid #fca5a5;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #dc2626;
+    margin-top: 14px;
+  }
+
+  .error-msg.visible { display: block; }
+
+  /* Loading spinner */
+  .spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .powered {
+    text-align: center;
+    font-size: 11px;
+    color: #d1d5db;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="widget">
+  <div class="widget-header">
+    <h1>What Should Your Airbnb Be Making?</h1>
+    <p>Get an instant revenue estimate powered by real market data.</p>
+  </div>
+
+  <div class="widget-body">
+    <div class="form-group">
+      <label for="address">Property Address <span class="req">*</span></label>
+      <input type="text" id="address" placeholder="e.g. 123 Main St, Austin, TX" autocomplete="street-address" />
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="bedrooms">Bedrooms <span class="req">*</span></label>
+        <select id="bedrooms">
+          <option value="">Select...</option>
+          <option value="0">Studio</option>
+          <option value="1">1 Bedroom</option>
+          <option value="2">2 Bedrooms</option>
+          <option value="3">3 Bedrooms</option>
+          <option value="4">4 Bedrooms</option>
+          <option value="5">5 Bedrooms</option>
+          <option value="6">6+ Bedrooms</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="currency">Currency</label>
+        <select id="currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="CAD">CAD (C$)</option>
+          <option value="AUD">AUD (A$)</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn" id="submitBtn" onclick="getEstimate()">Get My Revenue Estimate</button>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <div class="results" id="results">
+      <div class="results-label">Your Estimate</div>
+      <div class="metrics-grid">
+        <div class="metric-card highlight">
+          <div class="metric-label">Estimated Annual Revenue</div>
+          <div class="metric-value" id="annualRevenue">--</div>
+          <div class="metric-sub" id="annualSub"></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Avg Nightly Rate</div>
+          <div class="metric-value" id="adr">--</div>
+          <div class="metric-sub">per night</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Occupancy Rate</div>
+          <div class="metric-value" id="occupancy">--</div>
+          <div class="metric-sub">estimated avg</div>
+        </div>
+      </div>
+
+      <div class="cta-strip">
+        <p>Want to know what AirINN can do with your property?</p>
+        <a href="https://calendly.com/airinn/discovery" target="_blank">Book a Call</a>
+      </div>
+
+      <p class="results-note">Estimates based on comparable properties in your market. Actual results may vary.</p>
+    </div>
+
+    <div class="powered">Powered by PriceLabs market data</div>
+  </div>
+</div>
+
+<script>
+// AirINN Revenue Estimator Widget
+// Uses PriceLabs Revenue Estimator API (v2)
+// API key is embedded server-side in production; this demo uses a placeholder
+// In production: replace PRICELABS_API_KEY with your key or proxy through a backend
+
+const PRICELABS_API_KEY = 'iS6rqMr2nlNJ13hkbmpP0u5psO2LUJj9PujFwWYm';
+
+async function getEstimate() {
+  const address = document.getElementById('address').value.trim();
+  const bedrooms = document.getElementById('bedrooms').value;
+  const currency = document.getElementById('currency').value;
+  const btn = document.getElementById('submitBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const results = document.getElementById('results');
+
+  // Validate
+  errorMsg.classList.remove('visible');
+  results.classList.remove('visible');
+
+  if (!address) return showError('Please enter your property address.');
+  if (!bedrooms) return showError('Please select the number of bedrooms.');
+
+  // Loading state
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Calculating...';
+
+  try {
+    const params = new URLSearchParams({
+      address: address,
+      currency: currency,
+      'Bedroom category': bedrooms,
+      version: 2,
+      Monthly: true
+    });
+
+    const response = await fetch(`https://api.pricelabs.co/v1/revenue/estimator?${params}`, {
+      headers: {
+        'X-API-Key': PRICELABS_API_KEY
+      }
+    });
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      if (response.status === 400) throw new Error('Address not found or invalid. Please try a more specific address.');
+      if (response.status === 401) throw new Error('API key error. Please contact support.');
+      if (response.status === 429) throw new Error('Too many requests. Please wait a moment and try again.');
+      throw new Error(errData.message || 'Something went wrong. Please try again.');
+    }
+
+    const data = await response.json();
+    displayResults(data, currency);
+
+  } catch (err) {
+    showError(err.message || 'Unable to get estimate. Please try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Get My Revenue Estimate';
+  }
+}
+
+function displayResults(data, currency) {
+  const fmt = (n) => {
+    if (n == null) return '--';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+      maximumFractionDigits: 0
+    }).format(n);
+  };
+
+  const fmtPct = (n) => n != null ? `${Math.round(n * 100)}%` : '--';
+
+  // v2 response fields
+  const annual = data.annual_revenue ?? data.revenue ?? null;
+  const monthly = data.monthly_revenue ?? null;
+  const adr = data.adr ?? data.average_daily_rate ?? null;
+  const occ = data.occupancy ?? data.occupancy_rate ?? null;
+
+  document.getElementById('annualRevenue').textContent = fmt(annual);
+  document.getElementById('annualSub').textContent = monthly ? `~${fmt(monthly)}/month` : '';
+  document.getElementById('adr').textContent = fmt(adr);
+  document.getElementById('occupancy').textContent = fmtPct(occ);
+
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('visible');
+}
+
+// Allow Enter key to submit
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') getEstimate();
+});
+</script>
+</body>
+</html>
